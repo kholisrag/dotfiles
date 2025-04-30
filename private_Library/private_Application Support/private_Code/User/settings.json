@@ -1,0 +1,202 @@
+{
+    "workbench.startupEditor": "none",
+    "workbench.iconTheme": "vscode-icons",
+    "redhat.telemetry.enabled": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "terminal.explorerKind": "external",
+    "terminal.external.osxExec": "iTerm.app",
+    "docker.showStartPage": false,
+    "terminal.integrated.scrollback": 100000,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": ".github/workflows/*"
+    },
+    "telemetry.telemetryLevel": "off",
+    "go.toolsManagement.autoUpdate": true,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": "active",
+    "files.associations": {
+        "*.tf": "terraform",
+        "*.ctmpl": "hcl",
+        "*.hcl": "hcl",
+        "*.tmpl": "hcl",
+        "*.yml": "yaml",
+        "*.toml": "toml",
+        "*.css": "tailwindcss",
+        "*.template": "ini"
+    },
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "vs-kubernetes": {
+        "vs-kubernetes.namespace": "",
+        "vs-kubernetes.kubectl-path": "/usr/local/bin/kubectl",
+        "vs-kubernetes.helm-path": "/usr/local/bin/helm",
+        "vs-kubernetes.minikube-path": "",
+        "vs-kubernetes.kubectlVersioning": "user-provided",
+        "vs-kubernetes.outputFormat": "yaml",
+        "vs-kubernetes.kubeconfig": "",
+        "vs-kubernetes.knownKubeconfigs": [],
+        "vs-kubernetes.autoCleanupOnDebugTerminate": false,
+        "vs-kubernetes.nodejs-autodetect-remote-root": true,
+        "vs-kubernetes.nodejs-remote-root": "",
+        "vs-kubernetes.nodejs-debug-port": 9229,
+        "vs-kubernetes.dotnet-vsdbg-path": "~/vsdbg/vsdbg",
+        "vs-kubernetes.local-tunnel-debug-provider": "",
+        "checkForMinikubeUpgrade": false,
+        "imageBuildTool": "Docker",
+        "vs-kubernetes.crd-code-completion": "disabled",
+    },
+    "[terraform]": {
+        "editor.defaultFormatter": "gamunu.opentofu",
+        "editor.formatOnSave": true,
+        "editor.formatOnSaveMode": "file"
+    },
+    "[hcl]": {
+        "editor.defaultFormatter": "gamunu.opentofu",
+        "editor.formatOnSave": true,
+        "editor.formatOnSaveMode": "file"
+    },
+    "[terraform-vars]": {
+        "editor.defaultFormatter": "gamunu.opentofu",
+        "editor.formatOnSave": true,
+        "editor.formatOnSaveMode": "file"
+    },
+    "terraform.codelens.referenceCount": false,
+    "terminal.integrated.profiles.linux": {
+        "bash": {
+            "path": "bash",
+            "icon": "terminal-bash"
+        },
+        "zsh": {
+            "path": "zsh"
+        },
+        "fish": {
+            "path": "fish"
+        },
+        "tmux": {
+            "path": "tmux",
+            "icon": "terminal-tmux"
+        },
+        "pwsh": {
+            "path": "pwsh",
+            "icon": "terminal-powershell"
+        }
+    },
+    "terminal.external.linuxExec": "/usr/bin/zsh",
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "terraform.languageServer.enable": true,
+    "terraform.languageServer.terraform.path": "/usr/local/bin/terraform",
+    "terminal.integrated.confirmOnExit": "always",
+    "terminal.integrated.fontFamily": "MesloLGS Nerd Font",
+    "gitlens.defaultDateFormat": "DD MMMM YYYY h:mma",
+    "git.suggestSmartCommit": false,
+    "files.watcherExclude": {
+        "**/.terragrunt-cache/**": true,
+        "**/.bloop": true,
+        "**/.metals": true,
+        "**/.ammonite": true
+    },
+    "git.confirmSync": false,
+    "[yaml]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "vsicons.dontShowNewVersionMessage": true,
+    "editor.inlineSuggest.enabled": true,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": true,
+        "markdown": true,
+        "scminput": false
+    },
+    "terminal.integrated.showExitAlert": false,
+    "actionButtons": {
+        "defaultColor": "white",
+        "reloadButton": "↻",
+        "loadNpmCommands": false,
+    },
+    "terminal.integrated.fontSize": 14,
+    "vscode-kubernetes.kubectl-path.mac": "/usr/local/bin/kubectl",
+    "vscode-kubernetes.kubectl-path": "/usr/local/bin/kubectl",
+    "terminal.integrated.env.osx": {
+        "EDITOR": "code --wait"
+    },
+    "terminal.integrated.env.linux": {
+        "EDITOR": "code --wait"
+    },
+    "gitlens.rebaseEditor.ordering": "asc",
+    "githubPullRequests.fileListLayout": "flat",
+    "workbench.editor.empty.hint": "hidden",
+    "git.enableCommitSigning": true,
+    "search.exclude": {
+        "**/.terragrunt-cache/**": true,
+        "**/terragrunt-debug.tfvars.json": true
+    },
+    "workbench.tree.stickyScrollMaxItemCount": 15,
+    "git.autofetch": true,
+    "editor.accessibilitySupport": "off",
+    "editor.quickSuggestions": {
+        "strings": "on"
+    },
+    "tailwindCSS.includeLanguages": {
+        "plaintext": "html"
+    },
+    "prettier.singleQuote": false,
+    "go.lintTool": "golangci-lint",
+    "go.lintFlags": [
+        "--fast"
+    ],
+    "git.openRepositoryInParentFolders": "never",
+    "workbench.editorAssociations": {
+        "*.age": "default",
+        "*.tfstate": "default"
+    },
+    "thunder-client.customMethods": "unlock,lock",
+    "codesnap.transparentBackground": true,
+    "github.copilot.editor.enableAutoCompletions": true,
+    "terminal.integrated.allowedLinkSchemes": [
+        "file",
+        "http",
+        "https",
+        "mailto",
+        "vscode",
+        "vscode-insiders",
+        "docker-desktop"
+    ],
+    "files.trimTrailingWhitespace": true,
+    "svelte.enable-ts-plugin": true,
+    "[svelte]": {
+        "editor.defaultFormatter": "svelte.svelte-vscode"
+    },
+    "[scala]": {
+        "editor.suggestSelection": "first",
+        "editor.formatOnPaste": false,
+        "editor.formatOnType": false,
+        "editor.formatOnSave": false
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "opentofu.languageServer.enable": true,
+    "gitlens.ai.model": "vscode",
+    "gitlens.ai.vscode.model": "copilot:claude-3.7-sonnet",
+    "chat.agent.enabled": true,
+    "docker.lsp.telemetry": "off",
+    "gitlens.telemetry.enabled": false
+}

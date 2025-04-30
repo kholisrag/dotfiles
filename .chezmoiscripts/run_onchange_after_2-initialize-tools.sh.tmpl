@@ -1,0 +1,198 @@
+#!{{ lookPath "bash" }}
+# hash: {{ (output "find" (joinPath .chezmoi.sourceDir ".chezmoidata") "-type" "f" "-exec" "sha256sum" "{}" ";" | sha256sum) }}
+# hash: {{ (output "find" (joinPath .chezmoi.sourceDir "private_dot_gnupg") "-type" "f" "-exec" "sha256sum" "{}" ";" | sha256sum) }}
+# hash: {{ sha256sum (joinPath .chezmoi.sourceDir ".config.yaml.age") }}
+
+set -e
+export NONINTERACTIVE=1
+# Set PATH for truly blank slate machines
+{{- if eq .chezmoi.os "darwin" }}
+export PATH="/opt/homebrew/bin:$PATH"
+{{- end }}
+{{- $config := join .chezmoi.sourceDir ".config.yaml.age" | include | decrypt | fromYaml }}
+{{- range $item := $config.config }}
+{{- if eq $item.name "common" }}
+function initialize_github_cli() {
+  echo "checking for github cli..."
+  if $(gh auth status --active 2>&1 | grep -q "Logged in to"); then
+    echo "github cli already authenticated!!"
+  else
+    echo "github cli not authenticated, running gh auth login"
+    gh_token_temp=$(mktemp)
+    echo "{{ $item.config.github_login_token }}" > $gh_token_temp
+    gh auth login --hostname github.com --with-token < $gh_token_temp
+  fi
+}
+
+function initialize_tenv() {
+  echo "checking for tenv..."
+  echo "make terraform plugin cache directory"
+  mkdir -pv "{{ $.chezmoi.destDir }}/.terraform.d/plugin-cache"
+
+  echo "configuring tenv..."
+  export TENV_GITHUB_TOKEN=$(gh auth token)
+  export TENV_AUTO_INSTALL=true
+  echo "checking for tofu..."
+  if command -v tofu >/dev/null 2>&1 && [[ "$(tofu version | head -n1 | cut -d 'v' -f2)" == "{{ $item.config.opentofu_version }}" ]]; then
+    echo "opentofu v{{ $item.config.opentofu_version }} already installed!!"
+  else
+    echo "installing tofu v{{ $item.config.opentofu_version }}..."
+    tenv opentofu install {{ $item.config.opentofu_version }}
+  fi
+
+  echo "checking for terragrunt..."
+  if command -v terragrunt >/dev/null 2>&1 && [[ "$(terragrunt --version | grep -o 'v[0-9\.]*' | tail -n1 | cut -d 'v' -f2)" == "{{ $item.config.terragrunt_version }}" ]]; then
+    echo "terragrunt v{{ $item.config.terragrunt_version }} already installed!!"
+  else
+    echo "installing terragrunt v{{ $item.config.terragrunt_version }}..."
+    tenv terragrunt install {{ $item.config.terragrunt_version }}
+  fi
+}
+
+function initialize_gpg() {
+  echo "checking for gpg..."
+
+  # Check if gpg-agent is running
+  if ! pgrep -x "gpg-agent" > /dev/null; then
+    echo "gpg-agent not running, starting temporarily..."
+    eval $(gpg-agent --homedir {{ $.chezmoi.destDir }}/.gnupg --use-standard-socket --daemon)
+    # Give the agent a moment to start
+    sleep 1
+    GPG_AGENT_STARTED=1
+  else
+    GPG_AGENT_STARTED=0
+  fi
+
+  echo "checking for existing GPG key..."
+  if gpg --list-secret-keys {{ $item.config.gpg_signing_key }} &>/dev/null; then
+    echo "GPG key {{ $item.config.gpg_signing_key }} already exists"
+  else
+    echo "importing gpg private key"
+    gpg --import "{{ $.chezmoi.destDir }}/.gnupg/privkey.asc"
+
+    echo "importing gpg public key"
+    gpg --import "{{ $.chezmoi.destDir }}/.gnupg/pubkey.asc"
+
+    echo "check gpg keys"
+    gpg --list-secret-keys {{ $item.config.gpg_signing_key }}
+    gpg --list-keys {{ $item.config.gpg_signing_key }}
+
+    # If we started gpg-agent temporarily, kill it
+    if [ $GPG_AGENT_STARTED -eq 1 ]; then
+      echo "killing temporary gpg-agent..."
+      killall gpg-agent
+      sleep 1
+    else
+      # If gpg-agent was already running, reload it
+      echo "reloading gpg agent..."
+      gpgconf --kill gpg-agent
+      sleep 1
+    fi
+  fi
+}
+
+function initialize_gcloud() {
+  echo "checking for gcloud..."
+  if gcloud auth list --filter=status:ACTIVE --format="value(account)" 2>/dev/null | grep -q "."; then
+    echo "gcloud already authenticated!!"
+  else
+    echo "gcloud not authenticated, running gcloud auth login"
+    gcloud auth login --no-browser
+  fi
+
+  if [ -f "${HOME}/.config/gcloud/application_default_credentials.json" ]; then
+    echo "gcloud application default credentials already exist!!"
+  else
+    echo "setting up gcloud application default credentials"
+    gcloud auth application-default login --no-browser
+  fi
+
+  if command -v gke-gcloud-auth-plugin >/dev/null 2>&1; then
+    echo "gke-gcloud-auth-plugin is already installed"
+  else
+    echo "Installing gke-gcloud-auth-plugin..."
+    gcloud components install gke-gcloud-auth-plugin --quiet
+  fi
+}
+
+function initialize_atuin() {
+  echo "checking for atuin login..."
+  if atuin status 2>&1 | grep -q "{{ $item.config.atuin_username }}"; then
+    echo "atuin already logged in!!"
+  else
+    echo "logging into atuin..."
+    atuin login \
+      --username "{{ $item.config.atuin_username }}" \
+      --password "{{ $item.config.atuin_password }}" \
+      --key {{ $item.config.atuin_key | squote }}
+  fi
+}
+
+function initialize_openinterminal() {
+  echo "Initializing OpenInTerminal..."
+
+  # Check if OpenInTerminal.app exists
+  if [[ -d "/Applications/OpenInTerminal.app" ]]; then
+    echo "OpenInTerminal.app found, launching it for first-time setup"
+    # Open the app in the background and give it a moment to initialize
+    # Check if OpenInTerminal is already running
+    if ! pgrep -x "OpenInTerminal" >/dev/null; then
+      echo "Starting OpenInTerminal.."
+      open -a "/Applications/OpenInTerminal.app" &
+      sleep 5
+    else
+      echo "OpenInTerminal is already running"
+    fi
+
+    # Get extension information and check activation status
+    extension_info=$(pluginkit -mAD -p com.apple.FinderSync -vvv)
+
+    # Check if the OpenInTerminal extension is listed and get its UUID
+    if extension_uuid=$(echo "$extension_info" | grep -A 3 "wang.jianing.app.OpenInTerminal.OpenInTerminalFinderExtension" | grep "UUID = " | awk '{print $3}'); then
+      echo "Found OpenInTerminal extension with UUID: $extension_uuid"
+
+      # Check if the extension is activated (indicated by a '+')
+      if echo "$extension_info" | grep -q "^\+\s\+wang.jianing.app.OpenInTerminal.OpenInTerminalFinderExtension"; then
+        echo "OpenInTerminal extension is already activated"
+      # Check if the extension is not activated (indicated by a '-')
+      elif echo "$extension_info" | grep -q "^-\s\+wang.jianing.app.OpenInTerminal.OpenInTerminalFinderExtension"; then
+        echo "OpenInTerminal extension is not activated, activating now..."
+        # Enable the extension
+        pluginkit -e "use" -u "$extension_uuid"
+        echo "OpenInTerminal extension activated"
+      else
+        echo "OpenInTerminal extension found but its activation status is unknown."
+      fi
+    else
+      echo "OpenInTerminal extension not found in Finder extensions list"
+    fi
+  else
+    echo "OpenInTerminal.app is not installed in /Applications"
+  fi
+}
+
+function main_{{ $item.name }}() {
+  echo "initializing tools..."
+  initialize_github_cli
+  initialize_tenv
+  initialize_gpg
+  initialize_gcloud
+  initialize_atuin
+  initialize_openinterminal
+}
+
+main_{{ $item.name }} "$@"
+{{- end }}
+{{- if has "laku6" $.workspaces -}}
+{{- if eq $item.name "laku6" }}
+
+function main_{{ $item.name }}() {
+  echo "initializing {{ $item.name }}..."
+  export DEST_DIR="{{ $.chezmoi.destDir }}"
+  {{ $item.config.main_init_scripts }}
+}
+
+main_{{ $item.name }} "$@"
+{{- end -}}
+{{- end -}}
+{{- end }}

@@ -1,0 +1,18 @@
+#!{{ lookPath "bash" }}
+# hash: {{ (output "find" (joinPath .chezmoi.sourceDir ".chezmoidata") "-type" "f" "-exec" "sha256sum" "{}" ";" | sha256sum) }}
+# hash: {{ (output "find" (joinPath .chezmoi.sourceDir "private_dot_gnupg") "-type" "f" "-exec" "sha256sum" "{}" ";" | sha256sum) }}
+# hash: {{ sha256sum (joinPath .chezmoi.sourceDir ".config.yaml.age") }}
+
+set -e
+export NONINTERACTIVE=1
+
+{{- $config := join .chezmoi.sourceDir ".config.yaml.age" | include | decrypt | fromYaml }}
+{{- range $item := $config.config }}
+{{- if eq $item.name "common" }}
+function main() {
+  echo "initializing apps..."
+}
+
+main "$@"
+{{- end }}
+{{ end -}}

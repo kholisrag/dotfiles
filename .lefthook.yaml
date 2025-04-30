@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/evilmartians/lefthook/refs/heads/master/schema.json
+pre-commit:
+  parallel: true
+  jobs:
+    - name: check secrets with `gitleaks`
+      run: gitleaks git --pre-commit --staged --redact
+
+    - name: check broken links with `lychee`
+      run: lychee {staged_files}
+
+    - name: check typos with `typos`
+      run: typos --write-changes {staged_files}
+      stage_fixed: true

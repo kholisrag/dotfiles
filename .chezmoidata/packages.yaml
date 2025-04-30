@@ -1,0 +1,129 @@
+packages:
+  darwin:
+    homebrew:
+      taps:
+        - "cloudflare/cloudflare"
+        - "derailed/k9s"
+        - "goreleaser/tap"
+        - "oven-sh/bun"
+        - "xcodesorg/made"
+
+      brews:
+        - "age"
+        - "atuin"
+        - "awscli"
+        - "bat"
+        - "chezmoi"
+        - "cloudflared"
+        - "coreutils"
+        - "cosign"
+        - "derailed/k9s/k9s"
+        - "dive"
+        - "doggo"
+        - "fzf"
+        - "gh"
+        - "git"
+        - "gitleaks"
+        - "gnupg"
+        - "go"
+        - "go@1.22"
+        - "go@1.23"
+        - "go-task"
+        - "goreleaser/tap/goreleaser"
+        - "helm"
+        - "hugo"
+        - "kubernetes-cli"
+        - "lefthook"
+        - "lima"
+        - "lychee"
+        - "mas"
+        - "mkcert"
+        - "oven-sh/bun/bun"
+        - "pinentry-mac"
+        - "qemu"
+        - "sops"
+        - "stern"
+        - "tenv"
+        - "thefuck"
+        - "tldr"
+        - "tmux"
+        - "tree"
+        - "typos-cli"
+        - "uv"
+        - "vim"
+        - "watch"
+        - "watchman"
+        - "xcodesorg/made/xcodes"
+        - "yq"
+        - "zoxide"
+
+      casks:
+        - "cloudflare-warp"
+        - "displaylink"
+        - "docker"
+        - "font-hack-nerd-font"
+        - "font-meslo-lg-nerd-font"
+        - "gitify"
+        - "google-chrome"
+        - "google-cloud-sdk"
+        - "iterm2"
+        - "magicquit"
+        - "openinterminal"
+        - "rambox"
+        - "visual-studio-code"
+        - "vlc"
+        - "xcodes"
+
+    workspaces:
+      - name: "kholisrag"
+        brews:
+          - "ansible"
+        casks:
+          - "bartender"
+          - "beekeeper-studio"
+          - "betterdisplay"
+          - "ghostty"
+          - "handbrake"
+          - "rectangle-pro"
+          - "yaak"
+        mas:
+          - id: 1352778147
+            name: "Bitwarden"
+          - id: 1500855883
+            name: "CapCut"
+          - id: 6476452351
+            name: "DevHub"
+          - id: 6447703370
+            name: "HostsMan"
+          - id: 1527619437
+            name: "Maccy"
+          # - id: 441258766
+          #   name: "Magnet"
+          - id: 462058435
+            name: "Microsoft Excel"
+          - id: 462062816
+            name: "Microsoft PowerPoint"
+          - id: 462054704
+            name: "Microsoft Word"
+          - id: 1289583905
+            name: "Pixelmator Pro"
+          - id: 803453959
+            name: "Slack"
+          - id: 1538878817
+            name: "UTM"
+
+      - name: "laku6"
+        brews:
+          - "ansible@9"
+        casks:
+          - "dbeaver-community"
+          - "flameshot"
+          - "jordanbaird-ice"
+          - "kap"
+          - "kubecontext"
+          - "maccy"
+          - "monitorcontrol"
+          - "rectangle"
+          - "slack"
+          - "utm"
+        mas: []

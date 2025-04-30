@@ -1,0 +1,7 @@
+# Title for the gitleaks configuration file.
+title = "kholisrag dotfiles gitleaks config"
+
+[extend]
+# useDefault will extend the base configuration with the default gitleaks config:
+# https://github.com/gitleaks/gitleaks/blob/master/config/gitleaks.toml
+useDefault = true

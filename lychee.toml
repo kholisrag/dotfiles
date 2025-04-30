@@ -1,0 +1,6 @@
+exclude_path = [
+  "dot_p10k.zsh",
+  "dot_config/zsh/dot_p10k.zsh",
+  ".chezmoiexternals/antidote.toml.tmpl",
+  "install.sh",                           # temporary fix only need to debug further.
+]

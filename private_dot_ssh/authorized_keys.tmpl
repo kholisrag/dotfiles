@@ -1,0 +1,10 @@
+{{- $config := join .chezmoi.sourceDir ".config.yaml.age" | include | decrypt | fromYaml -}}
+{{- range $item := $config.config -}}
+{{- if eq $item.name "common" -}}
+{{- if eq $.device_role "server" -}}
+{{ range gitHubKeys $item.config.github_username }}
+{{- .Key }}
+{{ end }}
+{{- end }}
+{{- end }}
+{{- end }}

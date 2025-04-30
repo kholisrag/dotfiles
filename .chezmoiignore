@@ -1,0 +1,101 @@
+# ref: https://www.chezmoi.io/user-guide/manage-machine-to-machine-differences/#ignore-files-or-a-directory-on-different-machines
+# macOS specific files
+.DS_Store
+.Trash
+Applications/
+Desktop/
+Documents/
+Downloads/
+Movies/
+Music/
+Pictures/
+Public/
+{{- if ne .chezmoi.os "darwin" -}}
+# only ignore these files on non-darwin machines
+Library/
+{{- end }}
+
+# Documentation files
+README.md
+LICENSE
+*.txt
+
+# Development environment
+.vscode/
+*.code-workspace
+
+# Git related
+.gitignore
+.git/
+**/.git/
+.github/
+CODEOWNERS
+.gitleaks.toml
+.lefthook.yaml
+.typos.toml
+lychee.toml
+test.diff
+
+# Encrypted files
+key.txt.age
+
+# Repo configuration
+.config.yaml
+install.sh
+
+# Antidote + ZDotDir
+.zcompcache/
+**/.zcompcache/
+.zsh_sessions/
+**/.zsh_sessions/
+.zcompdump*
+**/.zcompdump*
+.zsh_history
+**/.zsh_history
+.zsh_plugins.zsh
+**/.zsh_plugins.zsh
+*.bak
+**/*.bak
+*.local
+**/*.local
+*.local.zsh
+**/*.local.zsh
+*.zwc
+**/*.zwc
+*.zwc.old
+**/*.zwc.old
+.cache/
+**/.cache/
+.tmp/
+**/.tmp/
+.plugins/
+**/.plugins/
+.todo/
+**/.todo/
+sandbox/
+**/sandbox/
+realzdotdir/
+**/realzdotdir/zsh_plugins.zsh
+foo*.*
+**/foo*.*
+
+# SSH
+.ssh/*known_hosts*
+
+# Miscellaneous
+*.log
+**/*.log
+temp/
+
+# GnuPG
+.gnupg/S.gpg-agent
+.gnupg/S.gpg-agent.browser
+.gnupg/S.gpg-agent.extra
+.gnupg/S.gpg-agent.ssh
+.gnupg/S.keyboxd
+.gnupg/S.scdaemon
+.gnupg/openpgp-revocs.d
+.gnupg/private-keys-v1.d
+.gnupg/public-keys.d
+.gnupg/sshcontrol
+.gnupg/trustdb.gpg

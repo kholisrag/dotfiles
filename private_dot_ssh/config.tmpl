@@ -1,0 +1,15 @@
+{{- if has "laku6" .workspaces }}
+{{- $config := join .chezmoi.sourceDir ".config.yaml.age" | include | decrypt | fromYaml }}
+{{- range $item := $config.config }}
+{{- if eq $item.name "laku6" }}
+Host {{ $item.config.gitlab_ssh_host }}
+    ProxyCommand {{ lookPath "cloudflared" }} access ssh --hostname %h
+
+Host gce-*
+    User {{ $item.config.oslogin_ssh_username }}
+    IdentityFile ~/.ssh/google_compute_engine
+    ProxyCommand ~/.ssh/gce-oslogin-proxy-command.sh %h %r %p
+    StrictHostKeyChecking no
+{{- end }}
+{{- end }}
+{{ end -}}

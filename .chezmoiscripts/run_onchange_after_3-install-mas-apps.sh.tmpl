@@ -1,0 +1,20 @@
+#!{{ lookPath "bash" }}
+
+set -e
+
+# Set PATH for truly blank slate machines
+{{- if eq .chezmoi.os "darwin" }}
+export PATH="/opt/homebrew/bin:$PATH"
+{{- end }}
+
+{{ if eq .chezmoi.os "darwin" -}}
+{{ range .packages.darwin.workspaces -}}
+{{ if has .name $.workspaces -}}
+{{ if .mas -}}
+{{ range .mas -}}
+mas install {{ .id }}
+{{ end -}}
+{{ end -}}
+{{ end -}}
+{{ end -}}
+{{ end -}}

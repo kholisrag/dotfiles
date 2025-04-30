@@ -1,0 +1,55 @@
+encryption = "age"
+{{- /* Sensible Default Configuration*/ -}}
+{{- $computerName := (output "hostname" | trim) -}}
+{{- $ageIdentityPath := (joinPath (.chezmoi.destDir | toString) ".config/chezmoi/key.txt") -}}
+{{- $ageRecipient := "age1lgmay2ca3aydsltkxjhz2qc6ep4rqdpjneye3lxra0h3a5k37aeqjj2ue4,age17nqlfm7qj72hgjfs82vqwcfatqymqngpwvp7v999crs2t5a6tu5sd0vcp9" -}}
+{{- $workspaceChoices := list "kholisrag" "laku6" -}}
+{{- $workspaces := list "" -}}
+{{- $deviceRoleChoices := list "workstation" "server" -}}
+{{- $deviceRole := "" -}}
+
+{{- /* check if current shell is interactive or not */ -}}
+{{- $shellInteractive := ne (env "CZ_INTERACTIVE" | toString) "false" -}}
+{{- if $shellInteractive -}}
+  {{- $ageIdentityPath = promptStringOnce . "age.identity" "age private key path" (joinPath (.chezmoi.destDir | toString) ".config/chezmoi/key.txt") -}}
+  {{- $ageRecipient = promptStringOnce . "age.recipient" "age public key(comma separated string)" "age1lgmay2ca3aydsltkxjhz2qc6ep4rqdpjneye3lxra0h3a5k37aeqjj2ue4,age17nqlfm7qj72hgjfs82vqwcfatqymqngpwvp7v999crs2t5a6tu5sd0vcp9" -}}
+  {{- $workspaces = promptMultichoiceOnce . "data.workspace" "select workspaces" $workspaceChoices (list "kholisrag") -}}
+  {{- $deviceRole = promptChoiceOnce . "data.device_role" "select device role" $deviceRoleChoices "workstation" -}}
+
+{{- /* else sensible default */ -}}
+{{- else -}}
+
+  {{- /* Known Devices */ -}}
+  {{- /* Personal */ -}}
+  {{- if contains "Petruk" $computerName -}}
+  {{- $workspaces = list "kholisrag" -}}
+  {{- $deviceRole = "workstation" -}}
+  {{- end -}}
+
+  {{- /* Work */ -}}
+  {{- if contains "LMBP" $computerName -}}
+  {{- $workspaces = list "laku6" -}}
+  {{- $deviceRole = "workstation" -}}
+  {{- end -}}
+
+  {{- /* Github Codespaces */ -}}
+  {{- if contains "codespaces" $computerName -}}
+  {{- $workspaces = list "kholisrag" -}}
+  {{- $deviceRole = "server" -}}
+  {{- end -}}
+
+{{- end }}
+
+[age]
+  identity = {{ $ageIdentityPath | squote }}
+  recipients = [{{ range $i, $recipient := split "," $ageRecipient }}{{ if eq $i "_0" }}{{ else }}, {{ end }}{{ $recipient | squote }}{{ end }}]
+
+[data]
+  device_role = {{ $deviceRole | toToml }}
+  workspaces = {{ $workspaces | toToml }}
+  # for debugging purpose only
+  # shell_interactive = {{ $shellInteractive | toString | squote }}
+  # computer_name = {{ $computerName | squote }}
+
+[hooks.read-source-state.pre]
+  command = '{{ $.chezmoi.sourceDir }}/.decrypt-age-private-key.sh'

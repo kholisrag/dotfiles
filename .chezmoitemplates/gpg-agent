@@ -1,0 +1,3 @@
+{{- if eq .os "darwin" -}}
+pinentry-program {{ with lookPath "pinentry-mac" }}{{ . }}{{ else }}/opt/homebrew/bin/pinentry-mac{{ end }}
+{{- end }}

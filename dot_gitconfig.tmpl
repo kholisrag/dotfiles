@@ -1,0 +1,17 @@
+{{- $config := join .chezmoi.sourceDir ".config.yaml.age" | include | decrypt | fromYaml -}}
+{{- range $item := $config.config -}}
+{{- if eq $item.name "common" -}}
+[user]
+	signingkey = {{ $item.config.gpg_signing_key }}
+	name = {{ $item.config.github_username }}
+	email = {{ $item.config.github_email }}
+[commit]
+	gpgsign = true
+[tag]
+	gpgSign = true
+[gpg]
+	program = {{ lookPath "gpg" }}
+[push]
+	autoSetupRemote = true
+{{- end }}
+{{ end -}}

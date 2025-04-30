@@ -1,0 +1,13 @@
+{
+	"auths": {},
+	{{ if has "laku6" .workspaces -}}
+	"credHelpers": {
+		"asia-docker.pkg.dev": "gcloud",
+		"asia-east1-docker.pkg.dev": "gcloud",
+		"asia-southeast1-docker.pkg.dev": "gcloud"
+	},
+	{{- else -}}
+	"credHelpers": {},
+	{{- end }}
+	"currentContext": "desktop-linux"
+}

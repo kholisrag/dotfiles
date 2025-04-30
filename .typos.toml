@@ -1,0 +1,11 @@
+#:schema = https://github.com/crate-ci/typos/raw/refs/heads/master/config.schema.json
+[default]
+extend-ignore-identifiers-re = ["^age.*"]
+
+[default.extend-words]
+iterm = "iterm"
+iterm2 = "iterm2"
+
+[type.age]
+extend-glob = ["*.age"]
+check-file = false

@@ -1,0 +1,135 @@
+#!{{ lookPath "bash" }}
+{{ if has "laku6" .workspaces -}}
+## This script is used as a proxy command for ssh to connect to a GCE VM instance
+## using the Google OS Login feature. It extracts the VM instance name, zone and
+## GCP project from the ssh host name and then starts an ssh session with the
+## extracted details.
+## Usage: ssh gce-{{`{{`}}vm-instance-name{{`}}`}}--{{`{{`}}gcp-project{{`}}`}}--{{`{{`}}zone{{`}}`}}--{{`{{`}}ssh-method{{`}}`}}
+#
+# Save this file to ~/.ssh/gce-oslogin-proxy-command.sh then make it executable
+# ```
+# chmod +x ~/.ssh/gce-oslogin-proxy-command.sh
+# ```
+# -----------------------
+# add in: .ssh/config
+# ```
+# ...
+# Host gce-*
+#     User {{`{{`}} oslogin_username {{`}}`}} # depends on your oslogin username
+#     IdentityFile ~/.ssh/google_compute_engine.pub # depends on where you store your ssh key
+#     ProxyCommand ~/.ssh/gce-oslogin-proxy-command.sh %h %r %p
+#     StrictHostKeyChecking no
+# ...
+# ```
+
+set -eu
+
+gce_vm_instance_name="${1}"
+ssh_username="${2}"
+ssh_port="${3}"
+
+vm_instance_name_without_prefix="${gce_vm_instance_name#gce-}"
+vm_instance_name=$(echo "$vm_instance_name_without_prefix" | awk -F'--' '{print $1}')
+vm_zone=$(echo "$vm_instance_name_without_prefix" | awk -F'--' '{print $2}')
+gcp_project=$(echo "$vm_instance_name_without_prefix" | awk -F'--' '{print $3}')
+ssh_method=$(echo "$vm_instance_name_without_prefix" | awk -F'--' '{print $4}')
+
+if [ -z "$ssh_method" ]; then
+  ssh_method="internal-ip"
+fi
+
+if [ -z "$ssh_port" ]; then
+  ssh_port="22"
+fi
+
+if [ -z "$ssh_username" ]; then
+  >/dev/stderr echo "Failed to extract the ssh username"
+  exit 1
+fi
+
+if [ -z "$gcp_project" ]; then
+  >/dev/stderr echo "Detected GCP project is empty, trying to get the project from gcloud config"
+  gcp_project=$(gcloud config get-value project)
+fi
+
+if [ -z "$vm_zone" ]; then
+  >/dev/stderr echo "Detected VM zone is empty, trying to get the zone from the VM instance name"
+  vm_zone=$(gcloud compute instances describe "${vm_instance_name}" --format='value(zone)' --project=${gcp_project})
+fi
+
+oslogin_username=$(gcloud compute os-login describe-profile --format='value(posixAccounts.username)' --project=${gcp_project})
+
+if [ -z "$oslogin_username" ]; then
+  >/dev/stderr echo "Failed to extract the os login username"
+  exit 1
+fi
+
+# Check if ssh_username same as oslogin_username
+if [ "$ssh_username" != "$oslogin_username" ]; then
+  >/dev/stderr echo "SSH username does not match the google os login username"
+  exit 1
+fi
+
+# Check if the extracted variables are empty
+if [ -z "$vm_instance_name" ] || [ -z "$vm_zone" ] || [ -z "$gcp_project" ] || [ -z "$oslogin_username" ]; then
+  >/dev/stderr echo "Failed to extract the VM instance name, zone and GCP project from the ssh host name"
+  exit 1
+fi
+
+# Print the extracted variables for confirmation
+>/dev/stderr echo "VM Instance Name: $vm_instance_name"
+>/dev/stderr echo "VM Zone: $vm_zone"
+>/dev/stderr echo "GCP Project: $gcp_project"
+>/dev/stderr echo "OS Login Username: $oslogin_username"
+>/dev/stderr echo "SSH Method: $ssh_method"
+>/dev/stderr echo "SSH Port: $ssh_port"
+>/dev/stderr echo "Start SSH Session with Google OS Login to VM Instance: ${vm_instance_name}"
+
+# check ssh_method is internal-ip or iap
+case "${ssh_method}" in
+  internal-ip)
+    gcloud compute \
+      --project=${gcp_project} \
+      ssh \
+      --zone=${vm_zone} \
+      "${oslogin_username}"@"${vm_instance_name}" \
+      --ssh-flag="-p ${ssh_port}" \
+      --internal-ip \
+      --command="nc $(basename ${vm_instance_name}) ${ssh_port}"
+    ;;
+  iap)
+    gcloud compute \
+      --project=${gcp_project} \
+      ssh \
+      --zone=${vm_zone} \
+      "${oslogin_username}"@"${vm_instance_name}" \
+      --ssh-flag="-p ${ssh_port}" \
+      --tunnel-through-iap \
+      --command="nc $(basename ${vm_instance_name}) ${ssh_port}"
+    ;;
+  legacy-internal-ip)
+    gcloud compute \
+      --project=${gcp_project} \
+      ssh \
+      --zone=${vm_zone} \
+      "${oslogin_username}"@"${vm_instance_name}" \
+      --ssh-flag="-p ${ssh_port} -o PubkeyAcceptedKeyTypes=+ssh-rsa -o HostKeyAlgorithms=+ssh-rsa" \
+      --internal-ip \
+      --command="nc $(basename ${vm_instance_name}) ${ssh_port}"
+    ;;
+  legacy-iap)
+    gcloud compute \
+      --project=${gcp_project} \
+      ssh \
+      --zone=${vm_zone} \
+      "${oslogin_username}"@"${vm_instance_name}" \
+      --ssh-flag="-p ${ssh_port} -o PubkeyAcceptedKeyTypes=+ssh-rsa -o HostKeyAlgorithms=+ssh-rsa" \
+      --tunnel-through-iap \
+      --command="nc $(basename ${vm_instance_name}) ${ssh_port}"
+    ;;
+  *)
+    >/dev/stderr echo "SSH method not supported"
+    exit 1
+    ;;
+esac
+{{ end -}}
