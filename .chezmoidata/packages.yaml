@@ -68,6 +68,7 @@ packages:
         - "google-cloud-sdk"
         - "iterm2"
         - "magicquit"
+        - "only-switch"
         - "openinterminal"
         - "rambox"
         - "visual-studio-code"
