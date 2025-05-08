@@ -83,6 +83,7 @@ packages:
           - "bartender"
           - "beekeeper-studio"
           - "betterdisplay"
+          - "claude"
           - "ghostty"
           - "handbrake"
           - "rectangle-pro"
