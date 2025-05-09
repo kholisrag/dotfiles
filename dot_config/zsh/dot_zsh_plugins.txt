@@ -62,9 +62,9 @@ ohmyzsh/ohmyzsh path:plugins/tmux
 ohmyzsh/ohmyzsh path:plugins/zoxide
 
 # oh-my-zsh external plugins
+aloxaf/fzf-tab
 zsh-users/zsh-completions kind:fpath path:src
 belak/zsh-utils path:completion/functions kind:autoload post:compstyle_zshzoo_setup
-aloxaf/fzf-tab
 zsh-users/zsh-history-substring-search
 zsh-users/zsh-syntax-highlighting
 zdharma-continuum/fast-syntax-highlighting
