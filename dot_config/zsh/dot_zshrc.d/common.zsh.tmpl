@@ -31,6 +31,8 @@ export SOPS_AGE_RECIPIENTS="{{ .chezmoi.config.age.recipient }}"
 # common zsh templates
 {{- range $item := $config.config }}
 {{- if eq $item.name "kholisrag" }}
+# kholisrag workspace
+export DEST_DIR="{{ $.chezmoi.destDir }}"
 {{ $item.config.common_zsh_templates }}
 {{- end }}
 {{- end }}
@@ -40,8 +42,9 @@ export SOPS_AGE_RECIPIENTS="{{ .chezmoi.config.age.recipient }}"
 {{ if has "laku6" .workspaces -}}
 {{- range $item := $config.config }}
 {{- if eq $item.name "laku6" }}
-export DEST_DIR="{{ $.chezmoi.destDir }}"
 # laku6 workspace
+export DEST_DIR="{{ $.chezmoi.destDir }}"
+
 # ansible
 export PATH="/opt/homebrew/opt/ansible@9/bin:$PATH"
 
