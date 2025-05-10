@@ -16,8 +16,8 @@ fi
 # ref: https://www.chezmoi.io/user-guide/advanced/install-your-password-manager-on-init/
 export CHEZMOI_DEST_DIR="${HOME}"
 export CHEZMOI_SOURCE_DIR="$(cd -P -- "$(dirname -- "$(command -v -- "$0")")" && pwd -P)"
-echo "CHEZMOI_DEST_DIR: $CHEZMOI_DEST_DIR"
-echo "CHEZMOI_SOURCE_DIR: $CHEZMOI_SOURCE_DIR"
+# echo "CHEZMOI_DEST_DIR: $CHEZMOI_DEST_DIR"
+# echo "CHEZMOI_SOURCE_DIR: $CHEZMOI_SOURCE_DIR"
 
 ##- USE WITH YOUR OWN RISK
 # check if `CZ_AGE_KEY` is set for non-interactive decryption automation
@@ -27,8 +27,8 @@ if [ -n "$CZ_AGE_KEY" ]; then
   mkdir -p "$CHEZMOI_DEST_DIR/.config/chezmoi"
   echo "$CZ_AGE_KEY" > "$CHEZMOI_DEST_DIR/.config/chezmoi/key.txt"
   chmod 600 "$CHEZMOI_DEST_DIR/.config/chezmoi/key.txt"
-else
-  echo "CZ_AGE_KEY is not set, skipping non-interactive decryption."
+# else
+#   echo "CZ_AGE_KEY is not set, skipping non-interactive decryption."
 fi
 
 # check if `CHEZMOI_SOURCE_DIR/key.txt.age` exists
@@ -38,6 +38,6 @@ if [ ! -f "$CHEZMOI_DEST_DIR/.config/chezmoi/key.txt" ]; then
   mkdir -p "$CHEZMOI_DEST_DIR/.config/chezmoi"
   $chezmoi_bin_path age decrypt --output "$CHEZMOI_DEST_DIR/.config/chezmoi/key.txt" --passphrase "$CHEZMOI_SOURCE_DIR/key.txt.age"
   chmod 600 "$CHEZMOI_DEST_DIR/.config/chezmoi/key.txt"
-else
-  echo "$CHEZMOI_DEST_DIR/.config/chezmoi/key.txt already exists, skipping decryption."
+# else
+#   echo "$CHEZMOI_DEST_DIR/.config/chezmoi/key.txt already exists, skipping decryption."
 fi
