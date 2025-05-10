@@ -84,6 +84,7 @@ packages:
           - "beekeeper-studio"
           - "betterdisplay"
           - "claude"
+          - "cursor"
           - "ghostty"
           - "handbrake"
           - "rectangle-pro"
