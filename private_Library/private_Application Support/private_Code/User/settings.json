@@ -199,7 +199,5 @@
     "chat.agent.enabled": true,
     "docker.lsp.telemetry": "off",
     "gitlens.telemetry.enabled": false,
-    "workbench.colorTheme": "Visual Studio Dark",
-    "window.autoDetectColorScheme": true,
-    "window.systemColorTheme": "auto"
+    "window.autoDetectColorScheme": true
 }
