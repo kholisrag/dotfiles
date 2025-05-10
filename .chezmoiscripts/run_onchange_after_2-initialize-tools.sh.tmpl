@@ -183,6 +183,20 @@ function main_{{ $item.name }}() {
 
 main_{{ $item.name }} "$@"
 {{- end }}
+
+{{- if has "kholisrag" $.workspaces -}}
+{{- if eq $item.name "kholisrag" }}
+
+function main_{{ $item.name }}() {
+  echo "initializing {{ $item.name }}..."
+  export DEST_DIR="{{ $.chezmoi.destDir }}"
+  {{ $item.config.main_init_scripts }}
+}
+
+main_{{ $item.name }} "$@"
+{{- end -}}
+{{- end -}}
+
 {{- if has "laku6" $.workspaces -}}
 {{- if eq $item.name "laku6" }}
 

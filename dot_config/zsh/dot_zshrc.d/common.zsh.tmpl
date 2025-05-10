@@ -1,3 +1,4 @@
+{{- $config := join .chezmoi.sourceDir ".config.yaml.age" | include | decrypt | fromYaml }}
 alias tg="terragrunt"
 alias tf="terraform"
 alias kcc="kubectl config current-context"
@@ -27,10 +28,16 @@ export CZ_INTERACTIVE="true"
 export SOPS_AGE_KEY_FILE="{{ .chezmoi.config.age.identity }}"
 export SOPS_AGE_RECIPIENTS="{{ .chezmoi.config.age.recipient }}"
 
+# common zsh templates
+{{- range $item := $config.config }}
+{{- if eq $item.name "kholisrag" }}
+{{ $item.config.common_zsh_templates }}
+{{- end }}
+{{- end }}
+
 {{ end -}}
 
 {{ if has "laku6" .workspaces -}}
-{{- $config := join .chezmoi.sourceDir ".config.yaml.age" | include | decrypt | fromYaml }}
 {{- range $item := $config.config }}
 {{- if eq $item.name "laku6" }}
 export DEST_DIR="{{ $.chezmoi.destDir }}"
