@@ -6,6 +6,9 @@ With chezmoi, I can setup my daily driver in a few minutes on any machine.
 It is a great tool for managing dotfiles and keeping them in sync across multiple machines.
 
 ```bash
+# for truly fresh install of macOS you need to install CommandLineTools first
+xcode-select --install
+
 # initialize chezmoi
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply kholisrag
 
