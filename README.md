@@ -32,7 +32,7 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --one-shot kholisrag
 
 ## Roadmap
 
-- [ ] Add support for `macOS`
+- [x] Add support for `macOS`
 
 - [ ] Add support for `linux`
 
