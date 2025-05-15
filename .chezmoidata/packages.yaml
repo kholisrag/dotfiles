@@ -80,6 +80,7 @@ packages:
         brews:
           - "ansible"
         casks:
+          - "aldente"
           - "bartender"
           - "beekeeper-studio"
           - "betterdisplay"
