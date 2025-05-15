@@ -85,6 +85,7 @@ packages:
           - "betterdisplay"
           - "claude"
           - "cursor"
+          - "daisydisk"
           - "ghostty"
           - "handbrake"
           - "rectangle-pro"
