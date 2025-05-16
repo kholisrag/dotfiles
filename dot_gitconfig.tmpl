@@ -14,4 +14,10 @@
 [push]
 	autoSetupRemote = true
 {{- end }}
+{{- if has "laku6" $.workspaces }}
+{{- if eq $item.name "laku6" -}}
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+{{- end }}
+{{- end }}
 {{ end -}}

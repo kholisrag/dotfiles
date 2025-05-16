@@ -55,6 +55,7 @@ export SOPS_AGE_RECIPIENTS={{ $item.config.sops_age_recipients | quote }}
 # golang
 export GONOSUMDB={{ $item.config.golang_gonosumdb | quote }}
 export GOPROXY={{ $item.config.golang_goproxy | quote }}
+export GOPRIVATE={{ $item.config.golang_goprivate | quote }}
 
 {{ $item.config.common_zsh_templates }}
 {{- end }}
