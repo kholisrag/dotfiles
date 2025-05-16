@@ -109,10 +109,7 @@
     "vsicons.dontShowNewVersionMessage": true,
     "editor.inlineSuggest.enabled": true,
     "github.copilot.enable": {
-        "*": true,
-        "plaintext": true,
-        "markdown": true,
-        "scminput": false
+        "*": false
     },
     "terminal.integrated.showExitAlert": false,
     "actionButtons": {
