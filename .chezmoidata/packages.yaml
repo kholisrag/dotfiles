@@ -81,7 +81,6 @@ packages:
           - "ansible"
         casks:
           - "aldente"
-          - "bartender"
           - "beekeeper-studio"
           - "betterdisplay"
           - "claude"
