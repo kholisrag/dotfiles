@@ -93,6 +93,8 @@ packages:
           - "sf-symbols"
           - "yaak"
         mas:
+          - id: 1548711022
+            name: "Barbee"
           - id: 1352778147
             name: "Bitwarden"
           - id: 1500855883
