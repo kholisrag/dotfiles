@@ -40,7 +40,7 @@ packages:
         - "mkcert"
         - "oven-sh/bun/bun"
         - "pinentry-mac"
-        - "pyenv"
+        # - "pyenv"
         - "qemu"
         - "sops"
         - "stern"
