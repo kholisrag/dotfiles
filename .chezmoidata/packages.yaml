@@ -7,7 +7,7 @@ packages:
         - "goreleaser/tap"
         - "oven-sh/bun"
         - "xcodesorg/made"
-        - "slp/krun"
+        # - "slp/krun"
 
       brews:
         - "age"
@@ -81,10 +81,11 @@ packages:
       - name: "kholisrag"
         brews:
           - "ansible"
-          - "buildah"
-          - "libkrunfw"
-          - "libkrun"
-          - "krunvm"
+          # - "buildah"
+          # - "libkrunfw"
+          # - "libkrun"
+          # - "krunvm"
+          - "podman"
         casks:
           - "aldente"
           - "beekeeper-studio"
@@ -94,6 +95,7 @@ packages:
           - "daisydisk"
           - "ghostty"
           - "handbrake"
+          - "podman-desktop"
           - "rectangle-pro"
           - "sf-symbols"
           - "yaak"
