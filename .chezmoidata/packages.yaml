@@ -36,6 +36,7 @@ packages:
         - "kubernetes-cli"
         - "lefthook"
         - "lima"
+        - "lima-additional-guestagents"
         - "lychee"
         - "mas"
         - "mkcert"
