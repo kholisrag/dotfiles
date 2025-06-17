@@ -99,6 +99,7 @@ packages:
           - "podman-desktop"
           - "rectangle-pro"
           - "sf-symbols"
+          - "th-ch/youtube-music/youtube-music"
           - "yaak"
         mas:
           - id: 1548711022
