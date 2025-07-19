@@ -6,6 +6,7 @@ packages:
         - "derailed/k9s"
         - "goreleaser/tap"
         - "oven-sh/bun"
+        - "th-ch/youtube-music"
         - "xcodesorg/made"
         # - "slp/krun"
 
@@ -69,7 +70,7 @@ packages:
         - "font-meslo-lg-nerd-font"
         - "gitify"
         - "google-chrome"
-        - "google-cloud-sdk"
+        - "gcloud-cli"
         - "goreleaser"
         - "iterm2"
         - "magicquit"
@@ -85,6 +86,7 @@ packages:
         brews:
           - "ansible"
           # - "buildah"
+          - "golangci-lint"
           # - "libkrunfw"
           # - "libkrun"
           # - "krunvm"
