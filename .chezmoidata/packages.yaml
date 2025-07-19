@@ -4,6 +4,7 @@ packages:
       taps:
         - "cloudflare/cloudflare"
         - "derailed/k9s"
+        - "golangci/tap"
         - "goreleaser/tap"
         - "oven-sh/bun"
         - "th-ch/youtube-music"
@@ -86,7 +87,7 @@ packages:
         brews:
           - "ansible"
           # - "buildah"
-          - "golangci-lint"
+          - "golangci/tap/golangci-lint"
           # - "libkrunfw"
           # - "libkrun"
           # - "krunvm"
