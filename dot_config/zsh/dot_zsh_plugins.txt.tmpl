@@ -56,7 +56,9 @@ ohmyzsh/ohmyzsh path:plugins/macos conditional:is-macos
 # sometimes annoying for me
 # ohmyzsh/ohmyzsh path:plugins/magic-enter
 ohmyzsh/ohmyzsh path:plugins/otp
-# ohmyzsh/ohmyzsh path:plugins/pyenv
+{{ if has "laku6" .workspaces -}}
+ohmyzsh/ohmyzsh path:plugins/pyenv
+{{- end }}
 ohmyzsh/ohmyzsh path:plugins/python
 ohmyzsh/ohmyzsh path:plugins/thefuck
 ohmyzsh/ohmyzsh path:plugins/tmux

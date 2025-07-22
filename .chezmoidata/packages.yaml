@@ -141,6 +141,8 @@ packages:
       - name: "laku6"
         brews:
           - "ansible@9"
+          - "pyenv"
+          - "pyenv-virtualenv"
         casks:
           - "dbeaver-community"
           - "flameshot"
