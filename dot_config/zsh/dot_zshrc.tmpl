@@ -24,11 +24,13 @@ autoload -Uz $ZFUNCDIR/*(.:t)
 #   git clone https://github.com/mattmc3/antidote ${ZDOTDIR:-$HOME}/.antidote
 # fi
 
-##- Use uv
-# # pyenv
-# export PYENV_ROOT="$HOME/.pyenv"
-# export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init --path)"
+##- Use uv by default
+{{- if has "laku6" .workspaces }}
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+{{- end }}
 
 # Create an amazing Zsh config using antidote plugins.
 source ${ZDOTDIR:-$HOME}/.antidote/antidote.zsh
