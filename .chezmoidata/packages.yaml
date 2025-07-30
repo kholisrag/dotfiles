@@ -106,6 +106,7 @@ packages:
           - "ghostty"
           - "handbrake"
           - "podman-desktop"
+          - "raspberry-pi-imager"
           - "rectangle-pro"
           - "sf-symbols"
           - "th-ch/youtube-music/youtube-music"
