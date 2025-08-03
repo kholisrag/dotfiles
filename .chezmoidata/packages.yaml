@@ -98,6 +98,7 @@ packages:
           - "podman"
         casks:
           - "aldente"
+          - "balenaetcher"
           - "beekeeper-studio"
           - "betterdisplay"
           - "claude"
