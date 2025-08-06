@@ -103,6 +103,7 @@ packages:
           - "betterdisplay"
           - "claude"
           - "cursor"
+          - "clover-configurator"
           - "daisydisk"
           - "ghostty"
           - "handbrake"
