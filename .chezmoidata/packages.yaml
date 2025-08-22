@@ -5,7 +5,7 @@ packages:
         - "cloudflare/cloudflare"
         - "derailed/k9s"
         - "golangci/tap"
-        - "goreleaser/tap"
+        # - "goreleaser/tap"
         - "go-task/tap"
         - "oven-sh/bun"
         - "th-ch/youtube-music"
@@ -96,6 +96,7 @@ packages:
           # - "libkrun"
           # - "krunvm"
           - "podman"
+          - "terraform-docs"
         casks:
           - "aldente"
           - "balenaetcher"
