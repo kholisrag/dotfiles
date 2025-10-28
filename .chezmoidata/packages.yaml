@@ -148,6 +148,7 @@ packages:
           - "ansible@9"
           - "pyenv"
           - "pyenv-virtualenv"
+          - "helmfile"
         casks:
           - "dbeaver-community"
           - "flameshot"
