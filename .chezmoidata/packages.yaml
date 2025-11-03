@@ -89,6 +89,7 @@ packages:
       - name: "kholisrag"
         brews:
           - "ansible"
+          - "ansible-lint"
           # - "buildah"
           - "golangci/tap/golangci-lint"
           - "go-task/tap/go-task"
