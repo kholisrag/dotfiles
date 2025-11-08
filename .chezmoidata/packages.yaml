@@ -107,6 +107,7 @@ packages:
           - "daisydisk"
           - "ghostty"
           - "handbrake"
+          - "loopback"
           - "opencore-configurator"
           - "podman-desktop"
           - "raspberry-pi-imager"
