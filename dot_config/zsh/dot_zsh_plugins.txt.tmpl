@@ -70,7 +70,8 @@ ohmyzsh/ohmyzsh path:plugins/macos conditional:is-macos
 mattmc3/zephyr path:plugins/macos conditional:is-macos
 
 ###
-### Heavy Plugins - Defer Loading
+### Heavy Plugins - Deferred for Performance
+### All needed for daily usage - loaded asynchronously
 ###
 
 # Cloud & DevOps tools - defer for faster startup
@@ -86,10 +87,8 @@ ohmyzsh/ohmyzsh path:plugins/pyenv kind:defer
 {{- end }}
 ohmyzsh/ohmyzsh path:plugins/python kind:defer
 
-# Other heavy plugins
+# Development tools - defer
 ohmyzsh/ohmyzsh path:plugins/chezmoi kind:defer
-# ohmyzsh/ohmyzsh path:plugins/otp kind:defer
-# ohmyzsh/ohmyzsh path:plugins/thefuck kind:defer
 
 # NVM - lazy load with defer
 lukechilds/zsh-nvm kind:defer
