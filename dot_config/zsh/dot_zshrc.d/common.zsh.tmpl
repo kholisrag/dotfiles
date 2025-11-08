@@ -22,8 +22,12 @@ _load_tokens() {
   export TENV_GITHUB_TOKEN=$(gh auth token 2>/dev/null)
   export GITHUB_TOKEN=$TENV_GITHUB_TOKEN
 }
-# Load tokens in background to avoid blocking startup
-(( $+commands[gh] )) && { _load_tokens & }
+# Load tokens in background silently (no job notifications)
+if (( $+commands[gh] )); then
+  {
+    _load_tokens
+  } &!
+fi
 
 {{- if eq .device_role "workstation" }}
 export CZ_INTERACTIVE="true"
