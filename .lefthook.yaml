@@ -9,5 +9,5 @@ pre-commit:
       run: lychee {staged_files}
 
     - name: check typos with `typos`
-      run: typos --write-changes {staged_files}
+      run: typos {staged_files}
       stage_fixed: true
