@@ -24,7 +24,7 @@ config.freetype_render_target = 'Normal'
 -- ============================================
 -- Color Scheme - Homebrew
 -- ============================================
-config.color_scheme = 'Homebrew'
+config.color_scheme = 'GitHub Dark'
 
 -- ============================================
 -- Tab Bar Configuration
@@ -48,8 +48,8 @@ config.window_frame = {
 config.window_padding = {
   left = 2,
   right = 2,
-  top = 0,
-  bottom = 0,
+  top = 2,
+  bottom = 2,
 }
 
 -- Window background opacity
