@@ -178,7 +178,7 @@
 	"typescript.updateImportsOnFileMove.enabled": "always",
 	"javascript.updateImportsOnFileMove.enabled": "always",
 	"gitlens.ai.model": "vscode",
-	"gitlens.ai.vscode.model": "copilot:claude-3.7-sonnet",
+	"gitlens.ai.vscode.model": "copilot:gpt-4.1",
 	"chat.agent.enabled": true,
 	"docker.lsp.telemetry": "off",
 	"gitlens.telemetry.enabled": false,
@@ -198,4 +198,11 @@
 	"[github-actions-workflow]": {
 		"editor.defaultFormatter": "redhat.vscode-yaml"
 	},
+	"github.copilot.enable": {
+		"*": true,
+		"plaintext": false,
+		"markdown": true,
+		"scminput": false
+	},
+	"github.copilot.nextEditSuggestions.enabled": false,
 }
