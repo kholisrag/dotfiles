@@ -1,0 +1,84 @@
+# ============================================
+# Font Configuration
+# ============================================
+font-family = "MesloLGS Nerd Font Mono"
+font-size = 14
+font-style = "Bold"
+
+# ============================================
+# Window Configuration
+# ============================================
+window-width = 100
+window-height = 30
+
+# Window padding
+window-padding-x = 5
+window-padding-y = 5
+
+# Window background opacity
+background-opacity = 0.8
+background-blur = true
+
+# ============================================
+# Theme - Dynamic based on system appearance
+# ============================================
+theme = dark:"Github Dark",light:"Github"
+
+# ============================================
+# Cursor Configuration
+# ============================================
+cursor-style = block
+cursor-style-blink = false
+
+# ============================================
+# Scrollback
+# ============================================
+scrollback-limit = 10000
+
+# ============================================
+# Tab Bar Configuration
+# ============================================
+window-decoration = true
+window-theme = auto
+
+# ============================================
+# Bell
+# ============================================
+# Visual bell is enabled by default in Ghostty
+
+# ============================================
+# Miscellaneous
+# ============================================
+auto-update = check
+copy-on-select = false
+confirm-close-surface = false
+
+# ============================================
+# Miscellaneous
+# ============================================
+# Set shell integration features
+shell-integration = detect
+shell-integration-features = sudo,title,ssh-env,ssh-terminfo
+# Set bell features
+bell-features = system,audio,attention,title,border
+# Set Copy on select
+copy-on-select = true
+# Set app notifications
+app-notifications = config-reload
+# Set clipboard access
+clipboard-read = allow
+clipboard-write = allow
+
+macos-window-buttons = visible
+macos-titlebar-style = native
+macos-window-shadow = true
+macos-auto-secure-input = true
+macos-icon = official
+macos-shortcuts = allow
+# Enable desktop notifications
+desktop-notifications = true
+# Set async backend
+async-backend = auto
+# Set auto-update behavior
+auto-update = download
+auto-update-channel = stable

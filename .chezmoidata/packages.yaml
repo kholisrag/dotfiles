@@ -105,7 +105,7 @@ packages:
           - "cursor"
           # - "clover-configurator"
           - "daisydisk"
-          # - "ghostty"
+          - "ghostty"
           - "handbrake"
           - "opencore-configurator"
           - "podman-desktop"
@@ -113,7 +113,7 @@ packages:
           - "rectangle-pro"
           - "sf-symbols"
           - "th-ch/youtube-music/youtube-music"
-          - "wezterm"
+          # - "wezterm"
           - "yaak"
         mas:
           - id: 1548711022
