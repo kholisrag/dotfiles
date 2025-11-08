@@ -24,12 +24,17 @@ autoload -Uz $ZFUNCDIR/*(.:t)
 #   git clone https://github.com/mattmc3/antidote ${ZDOTDIR:-$HOME}/.antidote
 # fi
 
-##- Use uv by default
+##- Use pyenv with lazy loading
 {{- if has "laku6" .workspaces }}
-# pyenv
+# pyenv - defer initialization for faster startup
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# Lazy load pyenv - only init when needed
+if command -v pyenv 1>/dev/null 2>&1; then
+  # Add shims to path but defer full init
+  export PATH="$PYENV_ROOT/shims:$PATH"
+  # Full init happens via OMZ plugin (deferred)
+fi
 {{- end }}
 
 # Create an amazing Zsh config using antidote plugins.

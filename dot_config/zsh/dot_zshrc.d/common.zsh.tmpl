@@ -7,19 +7,23 @@ alias cz="chezmoi"
 # gpg
 export GPG_TTY=$(tty)
 
-# coreutils
-export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
+# coreutils - cache the path to avoid repeated brew --prefix calls
+if (( $+commands[brew] )); then
+  export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+fi
 
 # go / golang
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 
-# tenv
-export TENV_GITHUB_TOKEN=$(gh auth token)
+# tenv - lazy load tokens only when needed
 export TENV_AUTO_INSTALL=true
-
-# github
-export GITHUB_TOKEN=$(gh auth token)
+_load_tokens() {
+  export TENV_GITHUB_TOKEN=$(gh auth token 2>/dev/null)
+  export GITHUB_TOKEN=$TENV_GITHUB_TOKEN
+}
+# Load tokens in background to avoid blocking startup
+(( $+commands[gh] )) && { _load_tokens & }
 
 {{- if eq .device_role "workstation" }}
 export CZ_INTERACTIVE="true"
