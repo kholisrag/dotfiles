@@ -35,13 +35,19 @@ config.use_fancy_tab_bar = true
 config.tab_bar_at_bottom = false
 config.show_tab_index_in_tab_bar = true
 
+-- Adjust tab bar font size to control height (works with fancy tab bar)
+config.window_frame = {
+  font = wezterm.font({ family = 'MesloLGS Nerd Font', weight = 'Bold' }),
+  font_size = 13.5,  -- Adjust this to change tab bar height (smaller = thinner tabs)
+}
+
 -- ============================================
 -- Window Appearance
 -- ============================================
 -- Window padding
 config.window_padding = {
   left = 2,
-  right = 10,
+  right = 2,
   top = 0,
   bottom = 0,
 }
