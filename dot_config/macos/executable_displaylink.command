@@ -27,10 +27,11 @@ fi
 # Launch DisplayLink using screen to avoid the purple screen recording icon
 # The 'screen' command is whitelisted by macOS and doesn't trigger the indicator
 screen -dmS displaylink arch -arm64 "$DISPLAYLINK_PATH"
-echo "DisplayLink launched successfully via screen session." >&2
 
-# Close the Terminal window using AppleScript
-osascript -e 'tell application "Terminal" to close first window' 2>/dev/null || kill "$TERMINAL_PID" 2>/dev/null || true
-osascript -e 'tell application "Terminal" to quit' 2>/dev/null || true
+# Give screen a moment to detach properly
+sleep 0.5
+
+# Close the Terminal window and quit the Terminal app
+osascript -e 'tell application "Terminal" to quit' &
 
 exit 0
