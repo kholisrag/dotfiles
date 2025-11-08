@@ -38,7 +38,7 @@ scrollback-limit = 10000
 # ============================================
 # Tab Bar Configuration
 # ============================================
-window-decoration = true
+window-decoration = auto
 window-theme = auto
 
 # ============================================
@@ -68,9 +68,8 @@ app-notifications = config-reload
 # Set clipboard access
 clipboard-read = allow
 clipboard-write = allow
-
 macos-window-buttons = visible
-macos-titlebar-style = native
+macos-titlebar-style = tabs
 macos-window-shadow = true
 macos-auto-secure-input = true
 macos-icon = official
