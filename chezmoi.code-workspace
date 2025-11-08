@@ -10,7 +10,8 @@
 			"*.sh.tmpl": "shellscript",
 			"dot_*rc": "shellscript",
 			".chezmoiignore": "gitignore",
-			".chezmoitemplates/*": "gotmpl"
+			".chezmoitemplates/*": "gotmpl",
+			"*.tmpl": "gotmpl"
 		}
 	}
 }
