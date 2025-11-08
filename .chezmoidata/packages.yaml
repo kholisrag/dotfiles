@@ -113,6 +113,7 @@ packages:
           - "rectangle-pro"
           - "sf-symbols"
           - "th-ch/youtube-music/youtube-music"
+          - "wezterm"
           - "yaak"
         mas:
           - id: 1548711022
