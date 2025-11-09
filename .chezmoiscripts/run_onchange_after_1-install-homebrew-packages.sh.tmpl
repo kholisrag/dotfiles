@@ -4,7 +4,7 @@ set -e
 
 {{ if eq .chezmoi.os "darwin" -}}
 echo "installing homebrew packages..."
-source ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 brew bundle --file=/dev/stdin <<EOF
 {{ range .packages.darwin.homebrew.taps -}}

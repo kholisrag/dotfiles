@@ -7,7 +7,7 @@ packages:
         - "golangci/tap"
         - "go-task/tap"
         - "oven-sh/bun"
-        - "th-ch/youtube-music"
+        # - "th-ch/youtube-music"
         - "xcodesorg/made"
         # - "slp/krun"
 
