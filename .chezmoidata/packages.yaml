@@ -106,7 +106,7 @@ packages:
           # - "clover-configurator"
           - "daisydisk"
           - "ghostty"
-          - "handbrake"
+          - "handbrake-app"
           - "loopback"
           - "opencore-configurator"
           # - "podman-desktop"
