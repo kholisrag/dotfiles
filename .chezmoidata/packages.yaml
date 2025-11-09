@@ -94,7 +94,7 @@ packages:
           # - "libkrunfw"
           # - "libkrun"
           # - "krunvm"
-          - "podman"
+          # - "podman"
           - "terraform-docs"
         casks:
           - "aldente"
@@ -109,7 +109,7 @@ packages:
           - "handbrake"
           - "loopback"
           - "opencore-configurator"
-          - "podman-desktop"
+          # - "podman-desktop"
           - "raspberry-pi-imager"
           - "rectangle-pro"
           - "sf-symbols"
