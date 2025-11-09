@@ -113,7 +113,7 @@ packages:
           - "raspberry-pi-imager"
           - "rectangle-pro"
           - "sf-symbols"
-          - "th-ch/youtube-music/youtube-music"
+          # - "th-ch/youtube-music/youtube-music"
           # - "wezterm"
           - "yaak"
         mas:
