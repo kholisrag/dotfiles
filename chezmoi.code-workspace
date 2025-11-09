@@ -9,6 +9,7 @@
 			"*.toml.tmpl": "ini",
 			"*.sh.tmpl": "shellscript",
 			"dot_*rc": "shellscript",
+			"**/dot_config/zsh/**/*.tmpl": "shellscript",
 			".chezmoiignore": "gitignore",
 			".chezmoitemplates/*": "gotmpl",
 			"*.tmpl": "gotmpl"
