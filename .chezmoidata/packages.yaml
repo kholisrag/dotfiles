@@ -115,6 +115,7 @@ packages:
           - "rectangle-pro"
           - "sf-symbols"
           # - "th-ch/youtube-music/youtube-music"
+          - "neved4/homebrew-tap/pear"
           # - "wezterm"
           - "yaak"
         ## ref: https://github.com/mas-cli/mas/issues/1029
