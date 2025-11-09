@@ -101,6 +101,7 @@ packages:
           - "balenaetcher"
           - "beekeeper-studio"
           - "betterdisplay"
+          - "cleanshot"
           - "claude"
           - "cursor"
           # - "clover-configurator"
