@@ -19,11 +19,11 @@ export PATH="$GOPATH/bin:$PATH"
 # tenv - lazy load tokens only when needed
 export TENV_AUTO_INSTALL=true
 _load_tokens() {
-  export TENV_GITHUB_TOKEN=$(gh auth token 2>/dev/null)
-  export GITHUB_TOKEN=$TENV_GITHUB_TOKEN
+  export GITHUB_TOKEN=$(gh auth token 2>/dev/null)
+  export TENV_GITHUB_TOKEN=$GITHUB_TOKEN
 }
 # Load tokens in background silently (no job notifications)
-if (( $+commands[gh] )); then
+if (( $+commands[gh] )) || (( $+commands[chezmoi] )) || (( $+commands[cz] )); then
   {
     _load_tokens
   } &!

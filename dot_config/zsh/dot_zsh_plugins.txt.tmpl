@@ -22,15 +22,18 @@ getantidote/use-omz
 ###
 
 # Use zephyr instead of heavy OMZ libs - more modular and faster
-mattmc3/zephyr path:plugins/history
+# mattmc3/zephyr path:plugins/history
+# mattmc3/zephyr path:plugins/prompt
+# mattmc3/zephyr path:plugins/zfunctions
 mattmc3/zephyr path:plugins/environment
-mattmc3/zephyr path:plugins/homebrew conditional:is-macos
+mattmc3/zephyr path:plugins/homebrew
 
 ###
 ### Completions (load before compinit)
 ###
 
 mattmc3/ez-compinit
+# mattmc3/zephyr path:plugins/completion
 zsh-users/zsh-completions kind:fpath path:src
 
 ###
@@ -58,16 +61,16 @@ $ZDOTDIR/lib/zsh-no-ps2.zsh
 
 # ohmyzsh/ohmyzsh path:plugins/extract
 # ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
-ohmyzsh/ohmyzsh path:plugins/git
-ohmyzsh/ohmyzsh path:plugins/colored-man-pages
-ohmyzsh/ohmyzsh path:plugins/tmux
-ohmyzsh/ohmyzsh path:plugins/zoxide
+ohmyzsh/ohmyzsh path:plugins/git kind:defer
+ohmyzsh/ohmyzsh path:plugins/colored-man-pages kind:defer
+ohmyzsh/ohmyzsh path:plugins/tmux kind:defer
+ohmyzsh/ohmyzsh path:plugins/zoxide kind:defer
 
 ###
 ### Conditional Platform-Specific
 ###
 
-ohmyzsh/ohmyzsh path:plugins/macos conditional:is-macos
+# ohmyzsh/ohmyzsh path:plugins/macos conditional:is-macos
 mattmc3/zephyr path:plugins/macos conditional:is-macos
 
 ###

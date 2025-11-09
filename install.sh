@@ -7,6 +7,9 @@
 # -u: exit on unset variables
 set -eu
 
+# POSIX way to get script's dir: https://stackoverflow.com/a/29834779/12156188
+script_dir="$(cd -P -- "$(dirname -- "$(command -v -- "$0")")" && pwd -P)"
+
 if ! chezmoi="$(command -v chezmoi)"; then
 	bin_dir="${HOME}/.local/bin"
 	chezmoi="${bin_dir}/chezmoi"
@@ -19,12 +22,9 @@ if ! chezmoi="$(command -v chezmoi)"; then
 		echo "To install chezmoi, you must have curl or wget installed." >&2
 		exit 1
 	fi
-	sh -c "${chezmoi_install_script}" -- -b "${bin_dir}"
+	sh -c "${chezmoi_install_script}" -- -b "${bin_dir}" -t $(cat ${script_dir}/.chezmoiversion | head -1 || echo "latest")
 	unset chezmoi_install_script bin_dir
 fi
-
-# POSIX way to get script's dir: https://stackoverflow.com/a/29834779/12156188
-script_dir="$(cd -P -- "$(dirname -- "$(command -v -- "$0")")" && pwd -P)"
 
 export CZ_INTERACTIVE="false"
 set -- init --apply --source="${script_dir}"
