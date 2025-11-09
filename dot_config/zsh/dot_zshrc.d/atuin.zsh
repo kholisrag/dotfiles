@@ -18,6 +18,8 @@ atuin-setup() {
     if [ -n "$selected" ]; then
       LBUFFER+="${selected}"
     fi
+    zle -U "$selected"
+    zle kill-buffer
     zle reset-prompt
     return $ret
   }
