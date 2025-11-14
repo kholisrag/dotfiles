@@ -89,6 +89,7 @@ packages:
           - "ansible"
           - "ansible-lint"
           # - "buildah"
+          - "fastfetch"
           - "golangci/tap/golangci-lint"
           - "go-task/tap/go-task"
           # - "libkrunfw"
