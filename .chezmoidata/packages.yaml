@@ -122,35 +122,33 @@ packages:
           - "neved4/homebrew-tap/pear"
           # - "wezterm"
           - "yaak"
-        ## ref: https://github.com/mas-cli/mas/issues/1029
-        mas: []
-        # mas:
-        #   - id: 1548711022
-        #     name: "Barbee"
-        #   - id: 1352778147
-        #     name: "Bitwarden"
-        #   - id: 1500855883
-        #     name: "CapCut"
-        #   - id: 6476452351
-        #     name: "DevHub"
-        #   - id: 6447703370
-        #     name: "HostsMan"
-        #   - id: 1527619437
-        #     name: "Maccy"
-        #   # - id: 441258766
-        #   #   name: "Magnet"
-        #   - id: 462058435
-        #     name: "Microsoft Excel"
-        #   - id: 462062816
-        #     name: "Microsoft PowerPoint"
-        #   - id: 462054704
-        #     name: "Microsoft Word"
-        #   - id: 1289583905
-        #     name: "Pixelmator Pro"
-        #   - id: 803453959
-        #     name: "Slack"
-        #   - id: 1538878817
-        #     name: "UTM"
+        mas:
+          - id: 1548711022
+            name: "Barbee"
+          - id: 1352778147
+            name: "Bitwarden"
+          - id: 1500855883
+            name: "CapCut"
+          - id: 6476452351
+            name: "DevHub"
+          - id: 6447703370
+            name: "HostsMan"
+          - id: 1527619437
+            name: "Maccy"
+          # - id: 441258766
+          #   name: "Magnet"
+          - id: 462058435
+            name: "Microsoft Excel"
+          - id: 462062816
+            name: "Microsoft PowerPoint"
+          - id: 462054704
+            name: "Microsoft Word"
+          - id: 1289583905
+            name: "Pixelmator Pro"
+          - id: 803453959
+            name: "Slack"
+          - id: 1538878817
+            name: "UTM"
 
       - name: "laku6"
         brews:
