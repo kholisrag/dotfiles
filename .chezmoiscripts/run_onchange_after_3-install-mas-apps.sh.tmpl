@@ -12,7 +12,7 @@ export PATH="/opt/homebrew/bin:$PATH"
 {{ if has .name $.workspaces -}}
 {{ if .mas -}}
 {{ range .mas -}}
-mas install {{ .id }}
+sudo mas install {{ .id }}
 {{ end -}}
 {{ end -}}
 {{ end -}}
