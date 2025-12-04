@@ -33,7 +33,7 @@ cursor-style-blink = false
 # ============================================
 # Scrollback
 # ============================================
-scrollback-limit = 10000
+scrollback-limit = 1000000
 
 # ============================================
 # Tab Bar Configuration
