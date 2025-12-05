@@ -4,6 +4,9 @@ alias tf="terraform"
 alias kcc="kubectl config current-context"
 alias cz="chezmoi"
 
+# Allow file overwriting with > redirection
+setopt clobber
+
 # gpg
 export GPG_TTY=$(tty)
 
