@@ -101,6 +101,7 @@ packages:
           - "terraform-docs"
         casks:
           - "aldente"
+          - "antigravity"
           - "balenaetcher"
           - "beekeeper-studio"
           - "betterdisplay"
