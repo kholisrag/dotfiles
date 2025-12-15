@@ -159,6 +159,7 @@ packages:
           - "pyenv-virtualenv"
           - "helmfile"
         casks:
+          - "antigravity"
           - "dbeaver-community"
           - "flameshot"
           - "jordanbaird-ice"
