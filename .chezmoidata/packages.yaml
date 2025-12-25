@@ -28,6 +28,7 @@ packages:
         - "fzf"
         - "gh"
         - "git"
+        - "git-filter-repo"
         - "gitleaks"
         - "gnupg"
         - "go"
@@ -110,9 +111,11 @@ packages:
           # - "cursor"
           # - "clover-configurator"
           - "daisydisk"
+          - "fluxcd/tap/flux"
           - "ghostty"
           - "handbrake-app"
           - "loopback"
+          - "mitmproxy"
           - "onyx"
           - "opencore-configurator"
           - "pearcleaner"
@@ -123,6 +126,7 @@ packages:
           # - "th-ch/youtube-music/youtube-music"
           - "neved4/homebrew-tap/pear"
           # - "wezterm"
+          - "vivaldi"
           - "yaak"
         mas:
           - id: 1548711022
