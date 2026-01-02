@@ -22,7 +22,7 @@ background-blur = true
 # ============================================
 # Theme - Dynamic based on system appearance
 # ============================================
-theme = dark:"Github Dark",light:"Github"
+theme = dark:"Github Dark",light:"Github Dark"
 
 # ============================================
 # Cursor Configuration
