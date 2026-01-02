@@ -9,6 +9,7 @@ packages:
         - "oven-sh/bun"
         # - "th-ch/youtube-music"
         - "siderolabs/tap"
+        - "steveyegge/beads"
         - "xcodesorg/made"
         # - "slp/krun"
 
@@ -90,6 +91,7 @@ packages:
         brews:
           - "ansible"
           - "ansible-lint"
+          - "bd"
           # - "buildah"
           - "fastfetch"
           - "fluxcd/tap/flux"
@@ -109,10 +111,12 @@ packages:
           - "betterdisplay"
           - "cleanshot"
           - "claude"
+          - "claude-code"
           # - "cursor"
           # - "clover-configurator"
           - "daisydisk"
           - "ghostty"
+          - "gitkraken"
           - "handbrake-app"
           - "loopback"
           - "mitmproxy"
