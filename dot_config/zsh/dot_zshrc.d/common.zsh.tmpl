@@ -74,4 +74,19 @@ export GOPRIVATE={{ $item.config.golang_goprivate | quote }}
 {{ $item.config.common_zsh_templates }}
 {{- end }}
 {{- end }}
+
+{{ if has "kloia" .workspaces -}}
+{{- range $item := $config.config }}
+{{- if eq $item.name "kloia" }}
+# kloia workspace
+export DEST_DIR="{{ $.chezmoi.destDir }}"
+
+# sops + age
+export SOPS_AGE_KEY_FILE={{ $item.config.sops_age_key_file | quote }}
+export SOPS_AGE_RECIPIENTS={{ $item.config.sops_age_recipients | quote }}
+
+{{ $item.config.common_zsh_templates }}
+{{- end }}
+{{- end }}
+
 {{ end -}}

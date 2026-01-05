@@ -20,6 +20,7 @@ packages:
         - "awscli"
         - "bat"
         - "bd"
+        - "bitwarden-cli"
         - "chezmoi"
         - "cloudflared"
         - "coreutils"
@@ -167,6 +168,21 @@ packages:
           - "pyenv"
           - "pyenv-virtualenv"
           - "helmfile"
+        casks:
+          - "dbeaver-community"
+          - "flameshot"
+          - "jordanbaird-ice"
+          - "kap"
+          - "kubecontext"
+          - "maccy"
+          - "monitorcontrol"
+          - "rectangle"
+          - "slack"
+          - "utm"
+        mas: []
+
+      - name: "kloia"
+        brews: []
         casks:
           - "dbeaver-community"
           - "flameshot"

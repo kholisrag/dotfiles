@@ -209,4 +209,17 @@ function main_{{ $item.name }}() {
 main_{{ $item.name }} "$@"
 {{- end -}}
 {{- end -}}
+
+{{- if has "kloia" $.workspaces -}}
+{{- if eq $item.name "kloia" }}
+
+function main_{{ $item.name }}() {
+  echo "initializing {{ $item.name }}..."
+  export DEST_DIR="{{ $.chezmoi.destDir }}"
+  {{ $item.config.main_init_scripts }}
+}
+
+main_{{ $item.name }} "$@"
+{{- end -}}
+{{- end -}}
 {{- end }}

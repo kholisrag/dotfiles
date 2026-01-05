@@ -20,6 +20,12 @@
 	insteadOf = https://github.com/
 {{- end }}
 {{- end }}
+{{- if has "kloia" $.workspaces }}
+{{- if eq $item.name "kloia" -}}
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+{{- end }}
+{{- end }}
 {{ end }}
 [init]
 	defaultBranch = main
