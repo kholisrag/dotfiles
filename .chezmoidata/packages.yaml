@@ -184,6 +184,7 @@ packages:
       - name: "kloia"
         brews: []
         casks:
+          - "aws-vpn-client"
           - "bitwarden"
           - "dbeaver-community"
           - "flameshot"
