@@ -83,10 +83,6 @@ export GOPRIVATE={{ $item.config.golang_goprivate | quote }}
 # kloia workspace
 export DEST_DIR="{{ $.chezmoi.destDir }}"
 
-# sops + age
-export SOPS_AGE_KEY_FILE={{ $item.config.sops_age_key_file | quote }}
-export SOPS_AGE_RECIPIENTS={{ $item.config.sops_age_recipients | quote }}
-
 {{ $item.config.common_zsh_templates }}
 {{- end }}
 {{- end }}
