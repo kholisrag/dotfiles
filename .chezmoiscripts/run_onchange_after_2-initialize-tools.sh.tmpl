@@ -117,7 +117,9 @@ function initialize_gcloud() {
 
 function initialize_atuin() {
   echo "checking for atuin login..."
-  if atuin status 2>&1 | grep -q "{{ $item.config.atuin_username }}"; then
+  ##- Workaround for atuin check
+  # if atuin status 2>&1 | grep -q "{{ $item.config.atuin_username }}"; then
+  if atuin login 2>&1 | grep -q "You are already logged in!"; then
     echo "atuin already logged in!!"
   else
     echo "logging into atuin..."
