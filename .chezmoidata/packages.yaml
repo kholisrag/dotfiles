@@ -87,6 +87,7 @@ packages:
         - "iterm2"
         - "magicquit"
         - "obs"
+        - "obs-backgroundremoval"
         - "only-switch"
         - "onyx"
         - "openinterminal"
