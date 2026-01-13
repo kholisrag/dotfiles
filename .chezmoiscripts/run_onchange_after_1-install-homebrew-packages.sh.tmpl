@@ -16,7 +16,6 @@ brew {{ . | quote }}
 {{ range .packages.darwin.homebrew.casks -}}
 cask {{ . | quote }}
 {{ end -}}
-
 {{ range .packages.darwin.workspaces -}}
 {{ if has .name $.workspaces -}}
 {{ if .brews -}}
