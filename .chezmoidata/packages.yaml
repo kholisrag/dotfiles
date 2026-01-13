@@ -86,6 +86,7 @@ packages:
         - "goreleaser/tap/goreleaser"
         - "iterm2"
         - "magicquit"
+        - "obs"
         - "only-switch"
         - "onyx"
         - "openinterminal"
