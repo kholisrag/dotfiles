@@ -75,6 +75,8 @@ export GOPRIVATE={{ $item.config.golang_goprivate | quote }}
 {{- end }}
 {{- end }}
 
+{{ end -}}
+
 {{ if has "kloia" .workspaces -}}
 {{- range $item := $config.config }}
 {{- if eq $item.name "kloia" }}
