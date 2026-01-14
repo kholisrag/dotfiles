@@ -99,6 +99,7 @@ packages:
         - "visual-studio-code"
         - "vlc"
         - "xcodes-app"
+        - "yaak"
 
     workspaces:
       - name: "kholisrag"
@@ -137,7 +138,6 @@ packages:
           - "neved4/homebrew-tap/pear"
           # - "wezterm"
           - "vivaldi"
-          - "yaak"
         mas:
           - id: 1548711022
             name: "Barbee"
