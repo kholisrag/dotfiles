@@ -72,6 +72,7 @@ packages:
 
       casks:
         - "antigravity"
+        - "beekeeper-studio"
         - "claude"
         - "claude-code"
         - "cloudflare-warp"
@@ -116,7 +117,6 @@ packages:
         casks:
           - "aldente"
           - "balenaetcher"
-          - "beekeeper-studio"
           - "betterdisplay"
           - "cleanshot"
           # - "cursor"
