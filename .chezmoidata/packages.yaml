@@ -19,6 +19,7 @@ packages:
         - "atuin"
         - "awscli"
         - "bat"
+        - "beads_viewer"
         - "bitwarden-cli"
         - "chezmoi"
         - "cloudflared"
