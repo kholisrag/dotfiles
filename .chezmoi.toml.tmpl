@@ -53,3 +53,7 @@ encryption = "age"
 
 [hooks.read-source-state.pre]
   command = '{{ $.chezmoi.sourceDir }}/.decrypt-age-private-key.sh'
+
+[edit]
+    command = "agy"
+    args = ["--wait"]
