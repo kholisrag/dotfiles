@@ -51,6 +51,7 @@ packages:
         - "lychee"
         - "mas"
         - "mkcert"
+        - "neovim"
         - "oven-sh/bun/bun"
         - "pinentry-mac"
         # - "pyenv"
