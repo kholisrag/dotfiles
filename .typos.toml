@@ -9,3 +9,11 @@ iterm2 = "iterm2"
 [type.age]
 extend-glob = ["*.age"]
 check-file = false
+
+[type.lockfile]
+extend-glob = [
+  "**/*-lock.json",
+  "**/lock.json"
+]
+check-file = false
+
