@@ -47,6 +47,7 @@ packages:
         - "helm"
         - "hugo"
         - "imagemagick"
+        - "iproute2mac"
         - "krew"
         - "kubernetes-cli"
         - "lazygit"
