@@ -109,6 +109,7 @@ packages:
         - "openinterminal"
         - "pearcleaner"
         - "rambox"
+        - "steipete/tap/codexbar"
         - "visual-studio-code"
         - "vlc"
         - "xcodes-app"
