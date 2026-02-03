@@ -2,6 +2,7 @@ packages:
   darwin:
     homebrew:
       taps:
+        - "aws/tap"
         - "cloudflare/cloudflare"
         - "derailed/k9s"
         - "golangci/tap"
@@ -200,7 +201,9 @@ packages:
         mas: []
 
       - name: "kloia"
-        brews: []
+        brews:
+          - "pipx"
+          - "aws/tap/eks-node-viewer"
         casks:
           - "aws-vpn-client"
           - "bitwarden"
