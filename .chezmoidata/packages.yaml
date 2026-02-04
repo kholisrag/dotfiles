@@ -29,6 +29,7 @@ packages:
         - "coreutils"
         - "cosign"
         - "derailed/k9s/k9s"
+        - "direnv"
         - "dive"
         - "doggo"
         - "fd"
