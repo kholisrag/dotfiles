@@ -153,6 +153,7 @@ packages:
           # - "th-ch/youtube-music/youtube-music"
           - "neved4/homebrew-tap/pear"
           # - "wezterm"
+          - "whyfi"
           - "vivaldi"
         mas:
           - id: 1548711022
