@@ -204,8 +204,9 @@ packages:
 
       - name: "kloia"
         brews:
-          - "pipx"
           - "aws/tap/eks-node-viewer"
+          - "pipx"
+          - "turbot/tap/steampipe"
         casks:
           - "aws-vpn-client"
           - "bitwarden"
