@@ -145,6 +145,7 @@ packages:
           - "handbrake-app"
           - "loopback"
           - "mitmproxy"
+          - "obsidian"
           - "opencore-configurator"
           # - "podman-desktop"
           - "raspberry-pi-imager"
