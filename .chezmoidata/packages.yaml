@@ -11,6 +11,7 @@ packages:
         - "oven-sh/bun"
         # - "th-ch/youtube-music"
         - "siderolabs/tap"
+        - "rogeriopvl/tap"
         - "xcodesorg/made"
         # - "slp/krun"
 
@@ -207,6 +208,7 @@ packages:
           - "aws/tap/eks-node-viewer"
           - "kustomize"
           - "pipx"
+          - "rogeriopvl/tap/fizzy-cli"
           - "turbot/tap/steampipe"
         casks:
           - "aws-vpn-client"
