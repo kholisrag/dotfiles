@@ -154,6 +154,7 @@ packages:
           - "neved4/homebrew-tap/pear"
           # - "wezterm"
           - "whyfi"
+          - "viscosity"
           - "vivaldi"
         mas:
           - id: 1548711022
