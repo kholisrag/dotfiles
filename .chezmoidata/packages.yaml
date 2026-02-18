@@ -212,6 +212,7 @@ packages:
           - "robzolkos/fizzy-cli/fizzy-cli"
           - "turbot/tap/steampipe"
         casks:
+          - "avast-security"
           - "aws-vpn-client"
           - "bitwarden"
           - "dbeaver-community"
