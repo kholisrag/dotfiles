@@ -225,6 +225,7 @@ packages:
           - "mhaeuser/mhaeuser/battery-toolkit"
           - "monitorcontrol"
           - "rectangle"
+          - "session-manager-plugin"
           - "slack"
           - "utm"
         mas: []
