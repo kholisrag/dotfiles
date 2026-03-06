@@ -4,6 +4,7 @@ packages:
       taps:
         - "aws/tap"
         - "cloudflare/cloudflare"
+        - "danielfoehrkn/switch"
         - "derailed/k9s"
         - "golangci/tap"
         - "go-task/tap"
@@ -207,6 +208,7 @@ packages:
       - name: "kloia"
         brews:
           - "aws/tap/eks-node-viewer"
+          - "danielfoehrkn/switch/switch"
           - "kustomize"
           - "pipx"
           - "robzolkos/fizzy-cli/fizzy-cli"
