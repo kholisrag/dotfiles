@@ -5,6 +5,7 @@ extend-ignore-identifiers-re = ["^age.*"]
 [default.extend-words]
 iterm = "iterm"
 iterm2 = "iterm2"
+Pn = "Pn"
 
 [type.age]
 extend-glob = ["*.age"]
