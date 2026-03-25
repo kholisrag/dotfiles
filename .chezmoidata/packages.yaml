@@ -212,6 +212,7 @@ packages:
           - "danielfoehrkn/switch/switch"
           - "kustomize"
           - "pipx"
+          - "pandoc"
           - "pango"
           - "poppler"
           - "robzolkos/fizzy-cli/fizzy-cli"
