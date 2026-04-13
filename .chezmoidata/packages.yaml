@@ -210,6 +210,8 @@ packages:
 
       - name: "kloia"
         brews:
+          - "ansible"
+          - "ansible-lint"
           - "aws/tap/eks-node-viewer"
           - "danielfoehrkn/switch/switch"
           - "kustomize"
