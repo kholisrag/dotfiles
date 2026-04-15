@@ -101,6 +101,7 @@ packages:
         - "docker-desktop"
         - "font-hack-nerd-font"
         - "font-meslo-lg-nerd-font"
+        - "font-roboto"
         - "gitify"
         - "ghostty"
         - "google-chrome"
