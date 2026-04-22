@@ -215,11 +215,13 @@ packages:
           - "ansible-lint"
           - "aws/tap/eks-node-viewer"
           - "danielfoehrkn/switch/switch"
+          - "freetds"
           - "kustomize"
           - "pipx"
           - "pandoc"
           - "pango"
           - "poppler"
+          - "redis"
           - "robzolkos/fizzy-cli/fizzy-cli"
           - "turbot/tap/steampipe"
         casks:
