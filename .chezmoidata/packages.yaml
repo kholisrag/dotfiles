@@ -230,6 +230,7 @@ packages:
           - "bitwarden"
           - "dbeaver-community"
           - "deepl"
+          - "drawio"
           - "flameshot"
           - "jordanbaird-ice"
           - "kap"
