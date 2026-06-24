@@ -6,6 +6,42 @@ set -e
 echo "installing homebrew packages..."
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+# Homebrew >= 6.0 requires non-official taps to be trusted before they can be
+# read (HOMEBREW_REQUIRE_TAP_TRUST), otherwise `brew bundle`/outdated checks warn
+# about and skip them. Trust every tap chezmoi manages up front. We trust both
+# the explicitly-configured taps and the taps implied by fully-qualified
+# `user/tap/formula` package names, plus any tap already installed on the system.
+trust_taps() {
+  echo "trusting homebrew taps..."
+  local tap
+  for tap in "$@"; do
+    [ -n "${tap}" ] && brew trust --tap "${tap}" >/dev/null 2>&1 || true
+  done
+  # Catch anything tapped transitively (e.g. dependencies) that we didn't list.
+  while IFS= read -r tap; do
+    brew trust --tap "${tap}" >/dev/null 2>&1 || true
+  done < <(brew tap 2>/dev/null)
+}
+
+trust_taps \
+{{ range .packages.darwin.homebrew.taps -}}
+  {{ . | quote }} \
+{{ end -}}
+{{- /* Also trust taps implied by fully-qualified user/tap/formula package names. */ -}}
+{{ range .packages.darwin.homebrew.brews -}}
+{{ $p := splitList "/" . -}}
+{{ if ge (len $p) 3 -}}
+  {{ printf "%s/%s" (index $p 0) (index $p 1) | quote }} \
+{{ end -}}
+{{ end -}}
+{{ range .packages.darwin.homebrew.casks -}}
+{{ $p := splitList "/" . -}}
+{{ if ge (len $p) 3 -}}
+  {{ printf "%s/%s" (index $p 0) (index $p 1) | quote }} \
+{{ end -}}
+{{ end -}}
+  ""
+
 brew bundle --file=/dev/stdin <<EOF
 {{ range .packages.darwin.homebrew.taps -}}
 tap {{ . | quote }}
