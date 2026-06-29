@@ -227,7 +227,7 @@ packages:
         casks:
           - "avast-security"
           - "aws-vpn-client"
-          - "bitwarden"
+          # - "bitwarden"
           - "dbeaver-community"
           - "deepl"
           - "drawio"
