@@ -92,7 +92,7 @@ packages:
         - "zoxide"
 
       casks:
-        - "antigravity"
+        - "antigravity-ide"
         - "beekeeper-studio"
         - "claude"
         - "claude-code@latest"
