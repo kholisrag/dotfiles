@@ -37,7 +37,7 @@ packages:
         - "fd"
         - "fzf"
         - "gastown"
-        - "gemini-cli"
+        # - "gemini-cli"
         - "gh"
         - "ghostscript"
         - "git"
