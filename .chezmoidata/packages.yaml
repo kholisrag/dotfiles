@@ -125,8 +125,8 @@ packages:
     workspaces:
       - name: "kholisrag"
         brews:
-          - "ansible"
-          - "ansible-lint"
+          # - "ansible"
+          # - "ansible-lint"
           # - "buildah"
           - "fastfetch"
           - "fluxcd/tap/flux"
@@ -192,7 +192,7 @@ packages:
 
       - name: "laku6"
         brews:
-          - "ansible@9"
+          # - "ansible@9"
           - "pyenv"
           - "pyenv-virtualenv"
           - "helmfile"
@@ -211,8 +211,8 @@ packages:
 
       - name: "kloia"
         brews:
-          - "ansible"
-          - "ansible-lint"
+          # - "ansible"
+          # - "ansible-lint"
           - "aws/tap/eks-node-viewer"
           - "danielfoehrkn/switch/switch"
           - "freetds"
