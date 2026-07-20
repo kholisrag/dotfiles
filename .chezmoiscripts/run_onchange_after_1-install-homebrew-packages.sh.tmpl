@@ -42,27 +42,39 @@ trust_taps \
 {{ end -}}
   ""
 
-brew bundle --file=/dev/stdin <<EOF
+# Taps and formulae: installed and upgraded as usual.
+echo "installing homebrew taps and formulae..."
+brew bundle install --file=/dev/stdin <<EOF
 {{ range .packages.darwin.homebrew.taps -}}
 tap {{ . | quote }}
 {{ end -}}
 {{ range .packages.darwin.homebrew.brews -}}
 brew {{ . | quote }}
 {{ end -}}
+{{ range .packages.darwin.workspaces -}}
+{{ if has .name $.workspaces -}}
+{{ range .brews -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ end -}}
+{{ end -}}
+EOF
+
+# Casks: install anything missing, but never upgrade what is already there.
+# --no-upgrade is all-or-nothing per `brew bundle` run, and there is no
+# cask equivalent of --upgrade-formulae, hence the separate bundle.
+echo "installing homebrew casks (no upgrades)..."
+brew bundle install --no-upgrade --file=/dev/stdin <<EOF
+{{ range .packages.darwin.homebrew.taps -}}
+tap {{ . | quote }}
+{{ end -}}
 {{ range .packages.darwin.homebrew.casks -}}
 cask {{ . | quote }}
 {{ end -}}
 {{ range .packages.darwin.workspaces -}}
 {{ if has .name $.workspaces -}}
-{{ if .brews -}}
-{{ range .brews -}}
-brew {{ . | quote }}
-{{ end -}}
-{{ end -}}
-{{ if .casks -}}
 {{ range .casks -}}
 cask {{ . | quote }}
-{{ end -}}
 {{ end -}}
 {{ end -}}
 {{ end -}}
