@@ -136,6 +136,7 @@ packages:
           # - "libkrun"
           # - "krunvm"
           # - "podman"
+          - "officecli"
           - "siderolabs/tap/talosctl"
           - "terraform-docs"
         casks:
@@ -146,6 +147,7 @@ packages:
           # - "cursor"
           # - "clover-configurator"
           - "daisydisk"
+          - "drawio"
           - "gitkraken"
           - "handbrake-app"
           - "loopback"
