@@ -68,6 +68,7 @@ packages:
         - "neovim"
         - "oven-sh/bun/bun"
         - "pinentry-mac"
+        - "prek"
         # - "pyenv"
         - "qemu"
         - "ripgrep"
