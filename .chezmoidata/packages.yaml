@@ -241,6 +241,7 @@ packages:
           - "maccy"
           - "mhaeuser/mhaeuser/battery-toolkit"
           - "monitorcontrol"
+          - "paseo"
           - "rectangle"
           - "session-manager-plugin"
           - "slack"
