@@ -72,6 +72,7 @@ packages:
         # - "pyenv"
         - "qemu"
         - "ripgrep"
+        - "semgrep"
         - "sops"
         - "stern"
         - "syft"
