@@ -73,6 +73,7 @@ packages:
         - "qemu"
         - "ripgrep"
         - "semgrep"
+        - "shellcheck"
         - "sops"
         - "stern"
         - "syft"
