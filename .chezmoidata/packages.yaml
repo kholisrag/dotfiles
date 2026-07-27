@@ -134,6 +134,7 @@ packages:
           - "fluxcd/tap/flux"
           - "golangci/tap/golangci-lint"
           - "go-task/tap/go-task"
+          - "herdr"
           # - "libkrunfw"
           # - "libkrun"
           # - "krunvm"
