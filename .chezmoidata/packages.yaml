@@ -3,6 +3,7 @@ packages:
     homebrew:
       taps:
         - "aws/tap"
+        - "basecamp/tap"
         - "cloudflare/cloudflare"
         - "danielfoehrkn/switch"
         - "derailed/k9s"
@@ -43,13 +44,14 @@ packages:
         - "git"
         - "git-filter-repo"
         - "gitleaks"
-        - "gnupg"
+        - "gnupg" 
         - "go"
         - "go@1.24"
         - "go-task"
         - "gogcli"
         - "graphviz"
         - "hashicorp/tap/packer"
+        - "herdr"
         - "helm"
         - "hugo"
         - "imagemagick"
@@ -96,6 +98,7 @@ packages:
 
       casks:
         - "antigravity-ide"
+        - "basecamp/tap/fizzy"
         - "beekeeper-studio"
         - "claude"
         - "claude-code@latest"
@@ -135,7 +138,6 @@ packages:
           - "fluxcd/tap/flux"
           - "golangci/tap/golangci-lint"
           - "go-task/tap/go-task"
-          - "herdr"
           # - "libkrunfw"
           # - "libkrun"
           # - "krunvm"
@@ -229,7 +231,7 @@ packages:
           - "pango"
           - "poppler"
           - "redis"
-          - "robzolkos/fizzy-cli/fizzy-cli"
+          # - "robzolkos/fizzy-cli/fizzy-cli"
           - "turbot/tap/steampipe"
         casks:
           - "avast-security"
