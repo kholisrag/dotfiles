@@ -226,6 +226,7 @@ packages:
           - "aws/tap/eks-node-viewer"
           - "danielfoehrkn/switch/switch"
           - "freetds"
+          - "glab"
           - "kustomize"
           - "pipx"
           - "pandoc"
