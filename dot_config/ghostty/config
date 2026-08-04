@@ -50,7 +50,6 @@ window-theme = auto
 # Miscellaneous
 # ============================================
 auto-update = check
-copy-on-select = false
 confirm-close-surface = false
 
 # ============================================
