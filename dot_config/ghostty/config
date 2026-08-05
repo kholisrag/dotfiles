@@ -8,8 +8,10 @@ font-style = "Bold"
 # ============================================
 # Window Configuration
 # ============================================
-window-width = 100
-window-height = 30
+# herdr's persisted session is laid out for ~176x48 (26-col sidebar + 150 content).
+# Opening smaller forces a full reflow of every pane on attach, then again on resize.
+window-width = 180
+window-height = 50
 
 # Window padding
 window-padding-x = 5
@@ -33,7 +35,9 @@ cursor-style-blink = false
 # ============================================
 # Scrollback
 # ============================================
-scrollback-limit = 100000000
+# Ghostty's default (10MB), per surface. herdr runs full-screen on the alternate
+# screen and keeps its own per-pane scrollback, so a larger value here is unused.
+scrollback-limit = 10000000
 
 # ============================================
 # Tab Bar Configuration
@@ -49,7 +53,6 @@ window-theme = auto
 # ============================================
 # Miscellaneous
 # ============================================
-auto-update = check
 confirm-close-surface = false
 
 # ============================================
@@ -67,6 +70,10 @@ app-notifications = config-reload
 # Set clipboard access
 clipboard-read = allow
 clipboard-write = allow
+# Active keyboard layout is "ABC", which is not U.S. Standard / U.S. International,
+# so Ghostty's layout-dependent default here is false and Option never sends Alt.
+# herdr and Claude Code both need Alt for word motions and alt+ bindings.
+macos-option-as-alt = true
 macos-window-buttons = visible
 macos-titlebar-style = native
 macos-window-shadow = true
