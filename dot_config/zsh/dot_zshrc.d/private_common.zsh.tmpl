@@ -19,18 +19,27 @@ fi
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 
-# tenv - lazy load tokens only when needed
+# github - token used directly by gh/git/tenv (no `gh auth login`, no keyring)
+{{- /* default: common.github_login_token, overridden by kholisrag.github_personal_token */ -}}
+{{- $ghToken := "" }}
+{{- range $item := $config.config }}
+{{- if eq $item.name "common" }}
+{{- $ghToken = $item.config.github_login_token }}
+{{- end }}
+{{- end }}
+{{- if has "kholisrag" .workspaces }}
+{{- range $item := $config.config }}
+{{- if eq $item.name "kholisrag" }}
+{{- $ghToken = $item.config.github_personal_token }}
+{{- end }}
+{{- end }}
+{{- end }}
+export GH_TOKEN={{ $ghToken | quote }}
+export GITHUB_TOKEN="$GH_TOKEN"
+
+# tenv
 export TENV_AUTO_INSTALL=true
-_load_tokens() {
-  export GITHUB_TOKEN=$(gh auth token 2>/dev/null)
-  export TENV_GITHUB_TOKEN=$GITHUB_TOKEN
-}
-# Load tokens in background silently (no job notifications)
-if (( $+commands[gh] )) || (( $+commands[chezmoi] )) || (( $+commands[cz] )); then
-  {
-    _load_tokens
-  } &!
-fi
+export TENV_GITHUB_TOKEN="$GH_TOKEN"
 
 {{- if eq .device_role "workstation" }}
 export CZ_INTERACTIVE="true"

@@ -10,17 +10,36 @@ export NONINTERACTIVE=1
 export PATH="/opt/homebrew/bin:$PATH"
 {{- end }}
 {{- $config := join .chezmoi.sourceDir ".config.yaml.age" | include | decrypt | fromYaml }}
+{{- /* github token: default common.github_login_token, overridden by kholisrag.github_personal_token */ -}}
+{{- $ghToken := "" }}
+{{- $ghTokenKey := "common.github_login_token" }}
 {{- range $item := $config.config }}
 {{- if eq $item.name "common" }}
+{{- $ghToken = $item.config.github_login_token }}
+{{- end }}
+{{- end }}
+{{- if has "kholisrag" .workspaces }}
+{{- range $item := $config.config }}
+{{- if eq $item.name "kholisrag" }}
+{{- $ghToken = $item.config.github_personal_token }}
+{{- $ghTokenKey = "kholisrag.github_personal_token" }}
+{{- end }}
+{{- end }}
+{{- end }}
+{{- range $item := $config.config }}
+{{- if eq $item.name "common" }}
+# github cli - use the token directly, no `gh auth login` / keyring involved
+export GH_TOKEN={{ $ghToken | quote }}
+export GITHUB_TOKEN="$GH_TOKEN"
+export TENV_GITHUB_TOKEN="$GH_TOKEN"
+
 function initialize_github_cli() {
   echo "checking for github cli..."
-  if $(gh auth status --active 2>&1 | grep -q "Logged in to"); then
-    echo "github cli already authenticated!!"
+  if gh auth status --active 2>&1 | grep -q "Logged in to"; then
+    echo "github cli authenticated via GH_TOKEN ({{ $ghTokenKey }})!!"
   else
-    echo "github cli not authenticated, running gh auth login"
-    gh_token_temp=$(mktemp)
-    echo "{{ $item.config.github_login_token }}" > $gh_token_temp
-    gh auth login --hostname github.com --with-token < $gh_token_temp
+    echo "WARNING: gh could not authenticate with the token from .config.yaml ({{ $ghTokenKey }})"
+    gh auth status || true
   fi
 }
 
@@ -30,7 +49,7 @@ function initialize_tenv() {
   mkdir -pv "{{ $.chezmoi.destDir }}/.terraform.d/plugin-cache"
 
   echo "configuring tenv..."
-  export TENV_GITHUB_TOKEN=$(gh auth token)
+  export TENV_GITHUB_TOKEN="$GH_TOKEN"
   export TENV_AUTO_INSTALL=true
   echo "checking for tofu..."
   if command -v tofu >/dev/null 2>&1 && [[ "$(tofu version | head -n1 | cut -d 'v' -f2)" == "{{ $item.config.opentofu_version }}" ]]; then
