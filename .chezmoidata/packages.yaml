@@ -81,6 +81,7 @@ packages:
         - "stern"
         - "syft"
         - "tectonic"
+        - "telnet"
         - "tenv"
         - "thefuck"
         - "tlrc"
@@ -235,6 +236,7 @@ packages:
           - "poppler"
           - "redis"
           # - "robzolkos/fizzy-cli/fizzy-cli"
+          - "tftp-now"
           - "turbot/tap/steampipe"
         casks:
           - "avast-security"
