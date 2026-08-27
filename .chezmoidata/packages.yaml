@@ -2,6 +2,7 @@ packages:
   darwin:
     homebrew:
       taps:
+        - "ankitpokhrel/jira-cli"
         - "aws/tap"
         - "basecamp/tap"
         - "cloudflare/cloudflare"
@@ -225,6 +226,7 @@ packages:
         brews:
           # - "ansible"
           # - "ansible-lint"
+          - "ankitpokhrel/jira-cli/jira-cli"
           - "aws/tap/eks-node-viewer"
           - "danielfoehrkn/switch/switch"
           - "freetds"
