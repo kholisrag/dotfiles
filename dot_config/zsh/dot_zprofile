@@ -1,0 +1,16 @@
+#!/bin/zsh
+#
+# .zprofile - loaded by login shells, after /etc/zprofile.
+#
+# macOS /etc/zprofile runs path_helper, which moves the system dirs (/usr/bin, /bin, ...)
+# ahead of what .zshenv set. Shells that skip .zshrc (Rex's login environment, GUI-launched
+# tools) then get /usr/bin/python3 (3.9) instead of Homebrew's, and the kloia hooks crash.
+# Put the user and Homebrew dirs back in front.
+
+typeset -gU path
+path=(
+  $HOME/{,s}bin(N)
+  $HOME/.local/{,s}bin(N)
+  /opt/{homebrew,local}/{,s}bin(N)
+  $path
+)
