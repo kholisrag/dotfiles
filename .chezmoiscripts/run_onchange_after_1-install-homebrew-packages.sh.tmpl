@@ -25,7 +25,7 @@ trust_taps() {
 
 trust_taps \
 {{ range .packages.darwin.homebrew.taps -}}
-  {{ . | quote }} \
+  {{ index (splitList " " .) 0 | quote }} \
 {{ end -}}
 {{- /* Also trust taps implied by fully-qualified user/tap/formula package names. */ -}}
 {{ range .packages.darwin.homebrew.brews -}}
@@ -46,7 +46,9 @@ trust_taps \
 echo "installing homebrew taps and formulae..."
 brew bundle install --file=/dev/stdin <<EOF
 {{ range .packages.darwin.homebrew.taps -}}
-tap {{ . | quote }}
+{{- /* A tap entry is "user/repo" or "user/repo url" for a repo not named homebrew-<repo>. */ -}}
+{{ $t := splitList " " . -}}
+tap {{ index $t 0 | quote }}{{ if gt (len $t) 1 }}, {{ index $t 1 | quote }}{{ end }}
 {{ end -}}
 {{ range .packages.darwin.homebrew.brews -}}
 brew {{ . | quote }}
@@ -66,7 +68,9 @@ EOF
 echo "installing homebrew casks (no upgrades)..."
 brew bundle install --no-upgrade --file=/dev/stdin <<EOF
 {{ range .packages.darwin.homebrew.taps -}}
-tap {{ . | quote }}
+{{- /* A tap entry is "user/repo" or "user/repo url" for a repo not named homebrew-<repo>. */ -}}
+{{ $t := splitList " " . -}}
+tap {{ index $t 0 | quote }}{{ if gt (len $t) 1 }}, {{ index $t 1 | quote }}{{ end }}
 {{ end -}}
 {{ range .packages.darwin.homebrew.casks -}}
 cask {{ . | quote }}

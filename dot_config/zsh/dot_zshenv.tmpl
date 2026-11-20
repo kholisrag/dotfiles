@@ -22,3 +22,7 @@ path=(
   # /usr/local/{,s}bin(N) # temporary disabled for now since its make a problem on some workstation
   $path
 )
+
+# Vite+ bin (https://viteplus.dev): vp and its node/npm shims first on PATH, replacing nvm.
+# The env file is written by `vp` itself; absent until the brew script installs vp.
+[[ ! -r {{ .chezmoi.destDir }}/.config/vite-plus/env ]] || . {{ .chezmoi.destDir }}/.config/vite-plus/env
