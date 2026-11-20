@@ -11,7 +11,6 @@ packages:
         - "golangci/tap"
         - "go-task/tap"
         - "hashicorp/tap"
-        - "mhaeuser/mhaeuser"
         - "oven-sh/bun"
         # - "th-ch/youtube-music"
         - "siderolabs/tap"
@@ -215,7 +214,7 @@ packages:
           - "helmfile"
         casks:
           - "dbeaver-community"
-          - "flameshot"
+          # - "flameshot" # cask disabled by Homebrew 2026-09-01: fails the macOS Gatekeeper check
           - "jordanbaird-ice"
           - "kap"
           - "kubecontext"
@@ -251,12 +250,11 @@ packages:
           - "dbeaver-community"
           - "deepl"
           - "drawio"
-          - "flameshot"
+          # - "flameshot" # cask disabled by Homebrew 2026-09-01: fails the macOS Gatekeeper check
           - "jordanbaird-ice"
           - "kap"
           - "kubecontext"
           - "maccy"
-          - "mhaeuser/mhaeuser/battery-toolkit"
           - "monitorcontrol"
           - "paseo"
           - "rectangle"
