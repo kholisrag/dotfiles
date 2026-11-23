@@ -40,7 +40,7 @@ packages:
         - "fd"
         - "fzf"
         - "gastown"
-        # - "gemini-cli"
+        # - "gemini-cli" # deprecated by Homebrew, disabled 2026-12-18; replacement: cask "antigravity-cli"
         - "gh"
         - "ghostscript"
         - "git"
@@ -103,9 +103,11 @@ packages:
         - "zoxide"
 
       casks:
+        - "antigravity-cli"
         - "antigravity-ide"
         - "basecamp/tap/fizzy"
         - "beekeeper-studio"
+        - "bettershot"
         - "claude"
         - "claude-code@latest"
         - "cloudflare-warp"
@@ -122,7 +124,7 @@ packages:
         - "iterm2"
         - "magicquit"
         - "obs"
-        - "obs-backgroundremoval"
+        # - "obs-backgroundremoval" # cask disabled by Homebrew 2026-11-13: incompatible with Homebrew install parameters
         - "only-switch"
         - "onyx"
         - "openinterminal"
@@ -165,7 +167,7 @@ packages:
           - "loopback"
           - "mitmproxy"
           - "obsidian"
-          - "opencore-configurator"
+          # - "opencore-configurator" # cask disabled by Homebrew 2026-09-01: fails the macOS Gatekeeper check
           - "paseo"
           # - "podman-desktop"
           - "raspberry-pi-imager"
