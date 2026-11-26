@@ -37,7 +37,6 @@ packages:
         - "doggo"
         - "fd"
         - "fzf"
-        - "gastown"
         # - "gemini-cli" # deprecated by Homebrew, disabled 2026-12-18; replacement: cask "antigravity-cli"
         - "gh"
         - "ghostscript"
