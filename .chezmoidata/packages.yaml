@@ -2,6 +2,7 @@ packages:
   darwin:
     homebrew:
       taps:
+        - "ampcode/tap"
         - "ankitpokhrel/jira-cli"
         - "aws/tap"
         - "basecamp/tap"
@@ -22,6 +23,7 @@ packages:
       brews:
         - "act"
         - "age"
+        - "ampcode/tap/ampcode"
         - "ast-grep"
         - "atuin"
         - "awscli"
@@ -100,6 +102,7 @@ packages:
         - "zoxide"
 
       casks:
+        - "ampcode/tap/amp@beta"
         - "antigravity-cli"
         - "antigravity-ide"
         - "basecamp/tap/fizzy"
