@@ -29,6 +29,8 @@
 {{ end }}
 [init]
 	defaultBranch = main
+[rerere]
+	enabled = true
 {{ if eq .chezmoi.os "darwin" }}
 [credential]
 	helper = osxkeychain
